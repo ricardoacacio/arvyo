@@ -5,7 +5,7 @@ from django.utils import timezone
 from datetime import timedelta, date
 from decimal import Decimal
 import json
-from .models import Account, Transaction, Category
+from .models import Account, Transaction, Category, Card
 
 # Importa o filtro personalizado 'get_item'
 from django.template import Library
@@ -58,7 +58,9 @@ def index(request):
 @login_required
 def wallets(request):
     user = request.user
+    
     user_accounts = Account.objects.filter(user=user).order_by('name')
+    user_cards = Card.objects.filter(user=user).order_by('name_on_card')
     
     transactions_by_account = {}
     expenses_by_account = {}
@@ -92,8 +94,6 @@ def wallets(request):
             date__gte=month_start
         ).order_by('date')
         
-        # --- Lógica corrigida para o gráfico ---
-        # 1. Calcular o saldo antes do início do mês
         balance_before_month = account.balance - total_transactions_sum
 
         dates = []
@@ -101,11 +101,9 @@ def wallets(request):
         
         current_balance = balance_before_month
 
-        # 2. Adicionar o ponto inicial do gráfico
         dates.append(month_start.strftime('%d/%m'))
         balances.append(float(current_balance))
 
-        # 3. Adicionar cada transação do mês como um novo ponto no gráfico
         for transaction in transactions_this_month:
             if transaction.transaction_type == 'expense':
                 current_balance -= transaction.amount
@@ -113,7 +111,6 @@ def wallets(request):
                 current_balance += transaction.amount
             dates.append(transaction.date.strftime('%d/%m'))
             balances.append(float(current_balance))
-        # --- Fim da lógica corrigida para o gráfico ---
             
         chart_data_by_account[account.id] = {
             'labels': dates,
@@ -123,6 +120,7 @@ def wallets(request):
     data = {
         'title': 'Carteiras',
         'user_accounts': user_accounts,
+        'user_cards': user_cards,
         'transactions_by_account': transactions_by_account,
         'expenses_by_account': expenses_by_account,
         'chart_data_by_account': chart_data_by_account,
@@ -144,10 +142,89 @@ def wallet_detail(request, account_id):
     
     return render(request, "home/wallet_detail.html", data)
 
-# As views a seguir são placeholders do seu projeto.
+def addBank(request):
+    if request.method == 'POST':
+        # Processa o formulário de adicionar conta bancária
+        account_name = request.POST.get('account_name')
+        bank_name = request.POST.get('bank_name')
+        initial_balance = request.POST.get('initial_balance')
+
+        # Converte o saldo inicial para Decimal
+        try:
+            initial_balance = Decimal(initial_balance)
+        except (ValueError, TypeError):
+            initial_balance = Decimal(0.00) # Define 0 como padrão em caso de erro
+
+        # Cria uma nova conta
+        Account.objects.create(
+            user=request.user,
+            name=account_name,
+            bank_name=bank_name,
+            balance=initial_balance,
+            is_active=True
+        )
+
+        return redirect('bankAddSuccessful') # Redireciona para a página de sucesso
+    
+    # Se a requisição for GET, apenas renderiza a página do formulário
+    data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}
+    return render(request, "home/addBank.html", data)
+
+@login_required
+def settingsBank(request):
+    user_accounts = Account.objects.filter(user=request.user)
+    
+    user_cards = Card.objects.filter(user=request.user) 
+    
+    data = {
+        'user_accounts': user_accounts,
+        'user_cards': user_cards,
+    }
+    
+    return render(request, "home/settingsBank.html", data)
+
+# A view addCard corrigida
+def addCard(request):
+    if request.method == 'POST':
+        name_on_card = request.POST.get('name_on_card')
+        card_name = request.POST.get('card_name')
+        card_number_raw = request.POST.get('card_number_masked').replace(" ", "")
+        brand = request.POST.get('brand')
+        expiration_date = request.POST.get('expiration_date')
+        
+        if len(card_number_raw) >= 8:
+            first_four = card_number_raw[:4]
+            last_four = card_number_raw[-4:]
+            card_number_masked = f"{first_four}********{last_four}"
+        else:
+            card_number_masked = card_number_raw
+        
+        Card.objects.create(
+            user=request.user,
+            card_name=card_name, # Corrigido: o valor é passado para o modelo
+            name_on_card=name_on_card,
+            card_number_masked=card_number_masked,
+            expiration_date=expiration_date,
+            brand=brand
+        )
+        return redirect('wallets')
+    
+    data = {'title': 'Add Card', 'subTitle': 'Adicionar Cartão'}
+    return render(request, "home/addCard.html", data)
+
+@login_required
+def delete_bank_account(request, account_id):
+    account = get_object_or_404(Account, id=account_id, user=request.user)
+    account.delete()
+    return redirect('settingsBank')
+
+@login_required
+def delete_credit_card(request, card_id):
+    card = get_object_or_404(Card, id=card_id, user=request.user)
+    card.delete()
+    return redirect('settingsBank')
+
 def index2(request): data = {'title': 'About Us', 'subTitle': 'About Us'}; return render(request,"home/index2.html", data)
-def addBank(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/addBank.html", data)
-def addCard(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/addCard.html", data)
 def addNewAccount(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/addNewAccount.html", data)
 def affiliates(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/affiliates.html", data)
 def analytics(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/analytics.html", data)
@@ -173,7 +250,6 @@ def profile(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; retu
 def reset(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/reset.html", data)
 def settings(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settings.html", data)
 def settingsApi(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsApi.html", data)
-def settingsBank(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsBank.html", data)
 def settingsCategories(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsCategories.html", data)
 def settingsCurrencies(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsCurrencies.html", data)
 def settingsGeneral(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsGeneral.html", data)

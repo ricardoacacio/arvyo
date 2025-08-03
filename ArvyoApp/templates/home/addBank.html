@@ -12,32 +12,28 @@
                                 <h4 class="card-title">Vincular uma conta bancária</h4>
                             </div>
                             <div class="card-body">
-                                <form action="bank-add-successful">
+                                <form method="POST" action="{% url 'addBank' %}">
+                                    {% csrf_token %}
                                     <div class="form-row">
                                         <div class="mb-3 col-xl-12">
-                                            <label class="mr-sm-2">Número de roteamento </label>
-                                            <input type="text" class="form-control" placeholder="25487">
+                                            <label class="mr-sm-2">Nome da Conta (ex: Conta Principal)</label>
+                                            <input type="text" class="form-control" name="account_name" required>
                                         </div>
                                         <div class="mb-3 col-xl-12">
-                                            <label class="mr-sm-2">Número da conta </label>
-                                            <input type="text" class="form-control" placeholder="36475">
+                                            <label class="mr-sm-2">Nome do Banco</label>
+                                            <input type="text" class="form-control" name="bank_name" required>
                                         </div>
                                         <div class="mb-3 col-xl-12">
-                                            <label class="mr-sm-2">Nome completo </label>
-                                            <input type="text" class="form-control" placeholder="Carla Pascle">
-                                        </div>
-                                        <div class="mb-3 col-xl-12">
-                                            <img src="/static/images/routing.png" alt="" class="img-fluid">
+                                            <label class="mr-sm-2">Saldo Inicial</label>
+                                            <input type="number" class="form-control" name="initial_balance" value="0.00" step="0.01" required>
                                         </div>
                                         <div class="col-12 mt-5">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <a href="{% url 'addNewAccount' %}"
-                                                        class="btn btn-primary w-100">Voltar</a>
+                                                    <a href="{% url 'addNewAccount' %}" class="btn btn-primary w-100">Voltar</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="{% url 'settingsBank' %}"
-                                                        class="btn btn-success  w-100">Salvar</a>
+                                                    <button type="submit" class="btn btn-success w-100">Salvar</button>
                                                 </div>
                                             </div>
                                         </div>

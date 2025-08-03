@@ -2,78 +2,91 @@
 
 {% block content %}
 
-    <div class="content-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-xl-4">
-                                <div class="page-title-content">
-                                    <h3>Banco</h3>
-                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
-                                </div>
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-xl-4">
+                            <div class="page-title-content">
+                                <h3>Gerenciar Carteiras</h3>
+                                <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
                             </div>
-                            <div class="col-auto">
-                                <div class="breadcrumbs"><a href="#">Início </a>
-                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
-                                    <a href="#">Banco</a>
-                                </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="breadcrumbs"><a href="#">Início </a>
+                                <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                <a href="#">Carteiras</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xxl-12 col-xl-12">
-                    <div class="settings-menu">
-                        <a href="{% url 'settings' %}">Conta</a>
-                        <a href="{% url 'settingsGeneral' %}">Geral</a>
-                        <a href="{% url 'settingsProfile' %}">Perfil</a>
-                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
-                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
-                        <a href="{% url 'settingsSession' %}">Sessão</a>
-                        <a href="{% url 'settingsCategories' %}">Categorias</a>
-                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
-                        <a href="{% url 'settingsApi' %}">Api</a>
-                        <a href="{% url 'support' %}">Suporte</a>
+        </div>
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12">
+                <div class="settings-menu">
+                    <a href="{% url 'settingsBank' %}">Carteiras</a>
+                    
+                    <a href="{% url 'settingsGeneral' %}">Geral</a>
+                    <a href="{% url 'settingsProfile' %}">Perfil</a>
+                    
+                    <a href="{% url 'settingsBank' %}">Contas e Cartões</a>
+                    
+                    <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                    <a href="{% url 'settingsSession' %}">Sessão</a>
+                    <a href="{% url 'settingsCategories' %}">Categorias</a>
+                    <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                    <a href="{% url 'settingsApi' %}">Api</a>
+                    <a href="{% url 'support' %}">Suporte</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Contas e Cartões Cadastrados</h4>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Adicionar Conta Bancária ou Cartão</h4>
+                    <div class="card-body">
+                        {% for account in user_accounts %}
+                        <div class="verify-content">
+                            <div class="d-flex align-items-center">
+                                <span class="me-3 icon-circle bg-primary text-white">
+                                    <i class="fi fi-rs-bank"></i></span>
+                                <div class="primary-number">
+                                    <h5 class="mb-0">{{ account.bank_name }}</h5>
+                                    <small>{{ account.name }}</small>
+                                    <br>
+                                    <span class="text-success">Ativa</span>
+                                </div>
+                            </div>
+                            <a href="{% url 'deleteBankAccount' account.pk %}" class="btn btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir esta conta?');">Excluir</a>
                         </div>
-                        <div class="card-body">
-                            <div class="verify-content">
-                                <div class="d-flex align-items-center">
-                                    <span class="me-3 icon-circle bg-primary text-white">
-                                        <i class="fi fi-rs-bank"></i></span>
-                                    <div class="primary-number">
-                                        <h5 class="mb-0">Bank of America</h5>
-                                        <small>Banco **************5421</small>
-                                        <br>
-                                        <span class="text-success">Verificado</span>
-                                    </div>
-                                </div>
-                                <button class=" btn btn-outline-primary">Gerenciar</button>
-                            </div>
+                        {% if not forloop.last or user_cards %}
                             <hr class="border opacity-1">
-                            <div class="verify-content">
-                                <div class="d-flex align-items-center">
-                                    <span class="me-3 icon-circle bg-primary text-white"><i
-                                            class="fi fi-rr-credit-card"></i></span>
-                                    <div class="primary-number">
-                                        <h5 class="mb-0">Master Card</h5>
-                                        <small>Cartão de Crédito *********5478</small>
-                                        <br>
-                                        <span class="text-success">Verificado</span>
-                                    </div>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% for card in user_cards %}
+                        <div class="verify-content">
+                            <div class="d-flex align-items-center">
+                                <span class="me-3 icon-circle bg-primary text-white">
+                                    <i class="fi fi-rs-credit-card"></i></span>
+                                <div class="primary-number">
+                                    <h5 class="mb-0">{{ card.card_name }}</h5>
+                                    <small>{{ card.brand }}</small>
+                                    <br>
+                                    <span class="text-success">Ativa</span>
                                 </div>
-                                <button class=" btn btn-outline-primary">Gerenciar</button>
                             </div>
-                            <div class="mt-5">
-                                <a href="{% url 'addBank' %}" class="btn btn-primary m-2">Adicionar Novo Banco</a>
-                                <a href="{% url 'addCard' %}" class="btn btn-primary m-2">Adicionar Novo Cartão</a>
-                            </div>
+                            <a href="{% url 'deleteCreditCard' card.pk %}" class="btn btn-outline-danger" onclick="return confirm('Tem certeza que deseja excluir este cartão?');">Excluir</a>
+                        </div>
+                        {% if not forloop.last %}
+                            <hr class="border opacity-1">
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <div class="mt-5">
+                            <a href="{% url 'addBank' %}" class="btn btn-primary m-2">Adicionar Novo Banco</a>
+                            <a href="{% url 'addCard' %}" class="btn btn-primary m-2">Adicionar Novo Cartão</a>
                         </div>
                     </div>
                 </div>

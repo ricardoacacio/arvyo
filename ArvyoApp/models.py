@@ -111,3 +111,19 @@ class Goal(models.Model):
     class Meta:
         verbose_name = "Meta"
         verbose_name_plural = "Metas"
+
+# O modelo `Card` representa um cartão de crédito ou débito
+class Card(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brand = models.CharField(max_length=50)
+    name_on_card = models.CharField(max_length=100)
+    card_name = models.CharField(max_length=255, default='Meu Cartão')
+    card_number_masked = models.CharField(max_length=16) # O número será salvo mascarado
+    expiration_date = models.CharField(max_length=5) # Formato MM/YY
+    
+    def __str__(self):
+        return f"Card de {self.name_on_card} - {self.user.username}"
+
+    class Meta:
+        verbose_name = "Cartão"
+        verbose_name_plural = "Cartões"
