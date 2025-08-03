@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+{% include 'partials/head.html' %}
+
+<body class="dashboard">
+
+    {% include 'partials/preloader.html' %}
+
+    <div class="authincation">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-xl-5 col-md-6">
+                    <div class="mini-logo text-center my-5">
+                        <a href="{% url 'index' %}"><img src="/static/images/logo.png" alt=""></a>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <a class="page-back text-muted" href="{% url 'otpPhone' %}">
+                                <span><i class="fi fi-ss-angle-small-left"></i></span> Voltar</a>
+                            <h3 class="text-center">Verificação OTP</h3>
+                            <p class="text-center mb-5">Enviaremos um código de uso único para o final +xxx xxxxxxxx60.</p>
+                            <form action="settings-security">
+                                <div class="mb-3  mb-3">
+                                    <label class="mb-3">Seu Código OTP</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fi fi-sr-phone-call"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" value="11 22 33">
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success w-100">Verificar</button>
+                                </div>
+                            </form>
+                            <div class="info mt-3">
+                                <p class="text-muted">Não é recomendado salvar a senha nos navegadores!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/script.html' %}
+
+
+</body>
+
+</html>

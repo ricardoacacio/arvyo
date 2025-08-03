@@ -1,0 +1,103 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+            <script src="/static/vendor/chartjs/chartjs.js"></script>
+            <script src="/static/js/plugins/chartjs-bar-weekly-expense.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Análise</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Análise</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                        <div class="settings-menu">
+                            <a href="{% url 'analytics' %}">Análise</a>
+                            <a href="{% url 'analyticsExpenses' %}">Despesas</a>
+                            <a href="{% url 'analyticsIncome' %}">Receita</a>
+                            <a href="{% url 'analyticsIncomeVsExpenses' %}">Receita vs Despesas</a>
+                            <a href="{% url 'analyticsBalance' %}">Saldo</a>
+                            <a href="{% url 'analyticsTransactionHistory' %}">Histórico de Transações</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="analytics-widget">
+                                    <div class="widget-icon me-3 bg-primary"><span><i
+                                                class="fi fi-rr-mobile"></i></span>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>Média Diária</p>
+                                        <h3>$5470.36</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="analytics-widget">
+                                    <div class="widget-icon me-3 bg-success"><span><i
+                                                class="fi fi-rr-replace"></i></span>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>Mudança</p>
+                                        <h3>+47.36%</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="analytics-widget">
+                                    <div class="widget-icon me-3 bg-warning"><span><i
+                                                class="fi fi-rs-receipt"></i></span>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>Total de Transações</p>
+                                        <h3>354</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="analytics-widget">
+                                    <div class="widget-icon me-3 bg-danger">
+                                        <span><i class="fi fi-ss-confetti"></i></span>
+                                    </div>
+                                    <div class="widget-content">
+                                        <p>Categorias</p>
+                                        <h3>40</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Despesas Semanais </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="chartjsWeeklyExpenses"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

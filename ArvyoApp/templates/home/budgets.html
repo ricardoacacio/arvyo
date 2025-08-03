@@ -1,0 +1,401 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+            <script src="/static/vendor/chartjs/chartjs.js"></script>
+            <script src="/static/js/plugins/chartjs-bar-budget-period.js"></script>
+            <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+            <script src="/static/js/plugins/circle-progress-init.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Orçamentos</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Orçamentos</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="budgets-tab">
+                    <div class="row g-0">
+                        <div class="col-xl-3">
+                            <div class="nav d-block">
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-6">
+                                        <div class="budgets-nav active" data-bs-toggle="pill" data-bs-target="#a1">
+                                            <div class="budgets-nav-icon">
+                                                <span><i class="fi fi-rr-carrot"></i></span>
+                                            </div>
+                                            <div class="budgets-nav-text">
+                                                <h3>Mercearia</h3>
+                                                <p>$1458.30</p>
+                                            </div>
+                                            <span class="show-time">Excedido</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-6">
+                                        <div class="budgets-nav" data-bs-toggle="pill" data-bs-target="#a2">
+                                            <div class="budgets-nav-icon">
+                                                <span><i class="fi fi-rr-shirt-long-sleeve"></i></span>
+                                            </div>
+                                            <div class="budgets-nav-text">
+                                                <h3>Roupas</h3>
+                                                <p>$1458.30</p>
+                                            </div>
+                                            <span class="show-time">Semana</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-6">
+                                        <div class="budgets-nav" data-bs-toggle="pill" data-bs-target="#a3">
+                                            <div class="budgets-nav-icon">
+                                                <span><i class="fi fi-rr-car-bus"></i></span>
+                                            </div>
+                                            <div class="budgets-nav-text">
+                                                <h3>Transporte</h3>
+                                                <p>$1458.30</p>
+                                            </div>
+                                            <span class="show-time">Mês</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-6">
+                                        <div class="budgets-nav" data-bs-toggle="pill" data-bs-target="#a4">
+                                            <div class="budgets-nav-icon">
+                                                <span><i class="fi fi-rr-graduation-cap"></i></span>
+                                            </div>
+                                            <div class="budgets-nav-text">
+                                                <h3>Educação</h3>
+                                                <p>$1458.30</p>
+                                            </div>
+                                            <span class="show-time">Dia</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-budgets-link">
+                                <h5 class="mb-0">Adicionar novo orçamento</h5>
+                                <a href="{% url 'addNewAccount' %}">
+                                    <i class="fi fi-rr-square-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="tab-content budgets-tab-content">
+                                <div class="tab-pane show active" id="a1">
+                                    <div class="budgets-tab-title">
+                                        <h3>Mercearia</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <span>Gasto</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <span>Orçamento</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 25%;"
+                                                            role="progressbar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mt-2">
+                                                        <span>25%</span>
+                                                        <span>75%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Mês Passado</p>
+                                                                <h3>$42,678</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Despesas</p>
+                                                                <h3>$1,798</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Impostos</p>
+                                                                <h3>$255.25</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Dívida</p>
+                                                                <h3>$365,478</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Período Orçamentário </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <canvas id="chartjsBudgetPeriod"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="a2">
+                                    <div class="budgets-tab-title">
+                                        <h3>Roupas</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <span>Gasto</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <span>Orçamento</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 25%;"
+                                                            role="progressbar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mt-2">
+                                                        <span>25%</span>
+                                                        <span>75%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Mês Passado</p>
+                                                                <h3>$42,678</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Despesas</p>
+                                                                <h3>$1,798</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Impostos</p>
+                                                                <h3>$255.25</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Dívida</p>
+                                                                <h3>$365,478</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Período Orçamentário </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <canvas id="chartjsBudgetPeriod2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="a3">
+                                    <div class="budgets-tab-title">
+                                        <h3>Transporte</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <span>Gasto</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <span>Orçamento</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 25%;"
+                                                            role="progressbar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mt-2">
+                                                        <span>25%</span>
+                                                        <span>75%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Mês Passado</p>
+                                                                <h3>$42,678</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Despesas</p>
+                                                                <h3>$1,798</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Impostos</p>
+                                                                <h3>$255.25</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Dívida</p>
+                                                                <h3>$365,478</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Período Orçamentário </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <canvas id="chartjsBudgetPeriod3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="a4">
+                                    <div class="budgets-tab-title">
+                                        <h3>Educação</h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div>
+                                                            <span>Gasto</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <span>Orçamento</span>
+                                                            <h3>$1458.30</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 25%;"
+                                                            role="progressbar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between mt-2">
+                                                        <span>25%</span>
+                                                        <span>75%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Mês Passado</p>
+                                                                <h3>$42,678</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Despesas</p>
+                                                                <h3>$1,798</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Impostos</p>
+                                                                <h3>$255.25</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                                            <div class="budget-widget">
+                                                                <p>Dívida</p>
+                                                                <h3>$365,478</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Período Orçamentário </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <canvas id="chartjsBudgetPeriod4"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

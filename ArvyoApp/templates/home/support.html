@@ -1,0 +1,86 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Suporte</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Suporte</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Seu Ticket</h4>
+                            <a href="{% url 'supportCreateTicket' %}" class="btn btn-primary">Criar Ticket</a>
+                        </div>
+                        <div class="card-body height-200 d-flex align-items-center justify-content-center">
+                            <p class="mt-5">Você ainda não tem tickets! Crie um clicando no <a
+                                    href="{% url 'supportCreateTicket' %}" class="text-primary">botão Criar</a></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Notificações dos Seus Tickets</h4>
+                            <a href="#" class="text-warning">Limpar Todas as Notificações</a>
+                        </div>
+                        <div class="card-body">
+                            <p>Ops, desculpe, não há notificações para mostrar</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Tickets Recentes</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="ticket-list">
+                                <a href="{% url 'supportTicketDetails' %}">
+                                    <div>
+                                        <h5>Estou tendo problemas para registrar minhas horas diárias <span
+                                                class="badge badge-success">ABERTO</span></h5>
+                                        <p>Postado em 24 de junho de 2025</p>
+                                    </div>
+                                    <span><i class="fi fi-ss-angle-right"></i></span>
+                                </a>
+                                <a href="{% url 'supportTicketDetails' %}">
+                                    <div>
+                                        <h5>Estou tendo problemas para registrar minhas horas diárias <span
+                                                class="badge badge-success">ABERTO</span></h5>
+                                        <p>Postado em 24 de junho de 2025</p>
+                                    </div>
+                                    <span><i class="fi fi-ss-angle-right"></i></span>
+                                </a>
+                                <a href="{% url 'supportTicketDetails' %}">
+                                    <div>
+                                        <h5>Estou tendo problemas para registrar minhas horas diárias <span
+                                                class="badge badge-success">ABERTO</span></h5>
+                                        <p>Postado em 24 de junho de 2025</p>
+                                    </div>
+                                    <span><i class="fi fi-ss-angle-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

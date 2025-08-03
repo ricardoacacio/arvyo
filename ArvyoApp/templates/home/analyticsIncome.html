@@ -1,0 +1,290 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+            <script src="/static/vendor/chartjs/chartjs.js"></script>
+            <script src="/static/js/plugins/chartjs-donut.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Receita</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Receita</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                        <div class="settings-menu">
+                            <a href="{% url 'analytics' %}">Análise</a>
+                            <a href="{% url 'analyticsExpenses' %}">Despesas</a>
+                            <a href="{% url 'analyticsIncome' %}">Receita</a>
+                            <a href="{% url 'analyticsIncomeVsExpenses' %}">Receita vs Despesas</a>
+                            <a href="{% url 'analyticsBalance' %}">Saldo</a>
+                            <a href="{% url 'analyticsTransactionHistory' %}">Histórico de Transações</a>
+                        </div>
+                        <div class="row">
+                            <div class=" col-xxl-4 col-xl-4 col-lg-6 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Detalhes da Receita</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="chartjsDonut"></canvas>
+                                        <div class="list-1 mt-3">
+                                            <ul>
+                                                <li>
+                                                    <p class="mb-0">Alimentação</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Transporte</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Saúde</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Educação</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Vestuário</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Animais</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                                <li>
+                                                    <p class="mb-0">Entretenimento</p>
+                                                    <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Histórico de Transações</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="transaction-table">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-responsive-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Categoria</th>
+                                                            <th>Data</th>
+                                                            <th>Descrição</th>
+                                                            <th>Valor</th>
+                                                            <th>Moeda</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-emerald-500 fi fi-rr-barber-shop"></i>
+                                                                    Beleza</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-teal-500 fi fi-rr-receipt"></i> Contas
+                                                                    &
+                                                                    Taxas</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-cyan-500 fi fi-rr-car-side"></i>
+                                                                    Carro</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-sky-500 fi fi-rr-graduation-cap"></i>
+                                                                    Educação</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-blue-500 fi fi-rr-clapperboard-play"></i>
+                                                                    Entretenimento</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-emerald-500 fi fi-rr-barber-shop"></i>
+                                                                    Beleza</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-teal-500 fi fi-rr-receipt"></i> Contas
+                                                                    &
+                                                                    Taxas</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-cyan-500 fi fi-rr-car-side"></i>
+                                                                    Carro</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                             <script src="/static/js/plugins/chartjs-pie-expenses.js"></script>
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-sky-500 fi fi-rr-graduation-cap"></i>
+                                                                    Educação</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span class="table-category-icon"><i
+                                                                        class="bg-blue-500 fi fi-rr-clapperboard-play"></i>
+                                                                    Entretenimento</span>
+                                                            </td>
+                                                            <td>
+                                                                12.12.2025
+                                                            </td>
+                                                            <td>
+                                                                Itens de Mercearia e refrigerantes
+                                                            </td>
+                                                            <td>
+                                                                -32.20
+                                                            </td>
+                                                            <td>USD</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

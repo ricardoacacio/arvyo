@@ -1,0 +1,80 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <h3>Detalhes da Conta: {{ account.name }}</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="stat-widget-1">
+                        <h6>Saldo Total</h6>
+                        <h3>$ {{ account.balance }}</h3>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Histórico de Transações</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="transaction-table">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Categoria</th>
+                                                <th>Data</th>
+                                                <th>Descrição</th>
+                                                <th>Valor</th>
+                                                <th>Moeda</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for transaction in transactions %}
+                                            <tr>
+                                                <td>
+                                                    <span class="table-category-icon">
+                                                        <i class="{{ transaction.category.color_class }} {{ transaction.category.icon_class }}"></i>
+                                                        {% if transaction.category %}
+                                                            {{ transaction.category.name }}
+                                                        {% else %}
+                                                            Sem Categoria
+                                                        {% endif %}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{ transaction.date|date:"d.m.Y" }}
+                                                </td>
+                                                <td>
+                                                    {{ transaction.description }}
+                                                </td>
+                                                <td>
+                                                    {{ transaction.amount }}
+                                                </td>
+                                                <td>USD</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}

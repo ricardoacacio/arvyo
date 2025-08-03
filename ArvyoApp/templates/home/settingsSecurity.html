@@ -1,0 +1,219 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Segurança</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Segurança</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12">
+                    <div class="settings-menu">
+                        <a href="{% url 'settings' %}">Conta</a>
+                        <a href="{% url 'settingsGeneral' %}">Geral</a>
+                        <a href="{% url 'settingsProfile' %}">Perfil</a>
+                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
+                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                        <a href="{% url 'settingsSession' %}">Sessão</a>
+                        <a href="{% url 'settingsCategories' %}">Categorias</a>
+                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                        <a href="{% url 'settingsApi' %}">Api</a>
+                        <a href="{% url 'support' %}">Suporte</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Cartão de Segurança Social</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="id-card-img">
+                                        <img src="/static/images/id.png" alt="" class="img-fluid">
+                                    </div>
+                                    <div class="id-info mt-3">
+                                        <h4>Carla Pascle </h4>
+                                        <ul>
+                                            <li class="verified mb-0">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-br-id-badge"></i></span>
+                                                    <div>
+                                                        <h5>
+                                                            0024 5687 2254 3698</h5>
+                                                        <p>
+                                                            <span><i class="fi fi-sr-badge-check"></i></span>
+                                                            Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <a href="{% url 'idFrontAndBackUpload' %}" class="btn btn-primary mt-3">
+                                            Adicionar Novo ID
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Verificação de E-mail</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="email-verification">
+                                        <ul>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-envelope"></i></span>
+                                                    <div>
+                                                        <h5> hello@example.com</h5>
+                                                        <p> <span><i
+                                                                    class="fi fi-sr-badge-check"></i></span>Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-envelope"></i></span>
+                                                    <div>
+                                                        <h5> hello@example.com</h5>
+                                                        <p> <span><i
+                                                                    class="fi fi-sr-badge-check"></i></span>Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-envelope"></i></span>
+                                                    <div>
+                                                        <h5> hello@example.com</h5>
+                                                        <p> <span><i
+                                                                    class="fi fi-sr-badge-check"></i></span>Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="pending">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-envelope"></i></span>
+                                                    <div>
+                                                        <h5> hello@example.com</h5>
+                                                        <p class="text-danger">
+                                                            <span class="text-danger"><i
+                                                                    class="fi fi-rs-circle-xmark"></i></span>Verificação
+                                                            pendente
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <form action="verify-email">
+                                        <input type="text" class="form-control" placeholder="hello@example.com ">
+                                        <button class="btn btn-primary mt-3">Adicionar Novo E-mail</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Verificação de Telefone</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="phone-verification">
+                                        <ul>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-phone-call"></i></span>
+                                                    <div>
+                                                        <h5> +1 135 468 45 </h5>
+                                                        <p>
+                                                            <span><i class="fi fi-sr-badge-check"></i></span>
+                                                            Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-phone-call"></i></span>
+                                                    <div>
+                                                        <h5> +1 135 468 45 </h5>
+                                                        <p>
+                                                            <span><i class="fi fi-sr-badge-check"></i></span>
+                                                            Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="verified">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-phone-call"></i></span>
+                                                    <div>
+                                                        <h5> +1 135 468 45 </h5>
+                                                        <p>
+                                                            <span><i class="fi fi-sr-badge-check"></i></span>
+                                                            Verificado
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="pending">
+                                                <div class="d-flex">
+                                                    <span class="round-icon"><i
+                                                            class="fi fi-rr-phone-call"></i></span>
+                                                    <div>
+                                                        <h5> +1 135 468 45</h5>
+                                                        <p class="text-danger">
+                                                            <span class="text-danger"><i
+                                                                    class="fi fi-rs-circle-xmark"></i></span>
+                                                            Verificação pendente
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <form action="otp-code">
+                                        <input type="text" class="form-control" placeholder="+1 135 468 45 ">
+                                        <button class="btn btn-primary mt-3">Adicionar Novo Telefone</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

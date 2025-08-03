@@ -1,0 +1,161 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Configurações</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Configurações</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12">
+                    <div class="settings-menu">
+                        <a href="{% url 'settings' %}">Conta</a>
+                        <a href="{% url 'settingsGeneral' %}">Geral</a>
+                        <a href="{% url 'settingsProfile' %}">Perfil</a>
+                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
+                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                        <a href="{% url 'settingsSession' %}">Sessão</a>
+                        <a href="{% url 'settingsCategories' %}">Categorias</a>
+                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                        <a href="{% url 'settingsApi' %}">Api</a>
+                        <a href="{% url 'support' %}">Suporte</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <div class="welcome-profile">
+                                        <div class="d-flex align-items-center">
+                                            <img src="/static/images/avatar/3.jpg" alt="">
+                                            <div class="ms-3">
+                                                <h4>Bem-vindo, Hafsa Humaira!</h4>
+                                                <p>Parece que você ainda não foi verificado. Verifique-se para usar todo o
+                                                    potencial da
+                                                    Arvyo.</p>
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><a href="#"><span class="verified"><i
+                                                            class="fi fi-bs-check"></i></span>Verificar
+                                                    conta</a></li>
+                                            <li><a href="#"><span class="not-verified"><i
+                                                            class="fi fi-rs-shield-check"></i></span>Autenticação de dois fatores
+                                                    (2FA)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Baixar Aplicativo</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="app-link">
+                                        <h5>Seja Verificado em Nosso Aplicativo Móvel</h5>
+                                        <p>Verificar sua identidade em nosso aplicativo móvel é mais seguro, rápido e
+                                            confiável.
+                                        </p>
+                                        <a href="#" class="btn btn-primary"><img src="/static/images/android.svg"
+                                                alt=""></a><br>
+                                        <div class="mt-3"></div>
+                                        <a href="#" class="btn btn-primary"><img src="/static/images/apple.svg"
+                                                alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-8 col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">VERIFICAR &amp; ATUALIZAR </h4>
+                                </div>
+                                <div class="card-body">
+                                    <h5>Status da Conta:
+                                        <span class="text-warning"> Pendente</span>
+                                    </h5>
+                                    <p>Sua conta não foi verificada. Verifique-se para habilitar financiamento, negociação e
+                                        saque.</p>
+                                    <a href="#" class="btn btn-primary">Seja Verificado</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Ganhe 30% de Comissão </h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Indique seus amigos e ganhe 30% de <br> suas taxas de negociação.</p>
+                                    <a href="{% url 'affiliates' %}" class="btn btn-primary">Programa de Indicação</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12">
+                            <div class="card">
+                                <div class="card-header flex-row">
+                                    <h4 class="card-title">Informações </h4>
+                                    <a class="btn btn-primary" href="{% url 'settingsProfile' %}">Editar</a>
+                                </div>
+                                <div class="card-body">
+                                    <form class="row">
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                                            <div class="user-info">
+                                                <span>ID DO USUÁRIO</span>
+                                                <h4>818778</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                                            <div class="user-info">
+                                                <span>ENDEREÇO DE EMAIL</span>
+                                                <h4>email@example.com</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                                            <div class="user-info">
+                                                <span>PAÍS DE RESIDÊNCIA</span>
+                                                <h4>Bangladesh</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                                            <div class="user-info">
+                                                <span>MEMBRO DESDE</span>
+                                                <h4>20/10/2020</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                                            <div class="user-info">
+                                                <span>TIPO</span>
+                                                <h4>Pessoal</h4>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

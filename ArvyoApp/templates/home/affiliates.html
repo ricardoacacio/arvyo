@@ -1,0 +1,119 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Afiliados</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Afiliados</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Seu Crédito</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="credit-content">
+                                <div class="invited d-flex justify-content-between">
+                                    <h6>Convidados</h6>
+                                    <h6 class="text-primary">12</h6>
+                                </div>
+                                <div class="earnings d-flex justify-content-between">
+                                    <h6>Ganhos</h6>
+                                    <h6 class="text-primary">$ 111</h6>
+                                </div>
+                                <button class="btn btn-primary">RESGATAR RECOMPENSAS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Link de Indicação</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Você ganha 5% das moedas que seus indicados ganharem através de uma oferta! Dê a eles este
+                                link para se cadastrarem e pronto</p>
+                            <div class="referral-form">
+                                <form action="#">
+                                    <div class="form-row align-items-center">
+                                        <div class="mb-3 col-xl-8">
+                                            <label>Seu Link de Indicação</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Seu Link de Indicação">
+                                            <div class="edit-copy">
+                                                <span><i class="fi fi-rr-copy-alt"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-social col-xl-4">
+                                            <a href="#">
+                                                <span><i class="fi fi-brands-facebook"></i></span>
+                                            </a>
+                                            <a href="#">
+                                                <span><i class="fi fi-brands-twitter"></i></span>
+                                            </a>
+                                            <a href="#">
+                                                <span><i class="fi fi-brands-instagram"></i></span>
+                                            </a>
+                                            <a href="#">
+                                                <span><i class="fi fi-brands-whatsapp"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="refferal-level">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Nível de Indicação</h4>
+                                <span class="current-bonus">Bônus Atual: 5%</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="referral-progress-content">
+                                    <div class="progress-popup first">
+                                        <h5>Bronze <span class="divider">|</span><span>5%</span></h5>
+                                        <p>Indicados: 0</p>
+                                    </div>
+                                    <div class="progress-popup middle">
+                                        <h5>Bronze <span class="divider">|</span><span>5%</span></h5>
+                                        <p>Indicados: 0</p>
+                                    </div>
+                                    <div class="progress-popup last">
+                                        <h5>Bronze <span class="divider">|</span><span>5%</span></h5>
+                                        <p>Indicados: 0</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar w-50" role="progressbar" aria-valuenow="75"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

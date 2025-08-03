@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    {% include 'partials/head.html' %}
+
+<body class="dashboard">
+
+    {% include 'partials/preloader.html' %}
+
+    <div id="main-wrapper">
+
+        {% if header %}
+            {{ header|safe }}
+        {% else %}
+            {% include 'partials/header.html' %}
+        {% endif %}
+
+        {% if sidebar %}
+            {{ sidebar|safe }}
+        {% else %}
+            {% include 'partials/sidebar.html' %}
+        {% endif %}
+
+        {# Conteúdo Principal #}
+        {% block content %}
+        {% endblock %}
+
+        {% if footer %}
+            {{ footer|safe }}
+        {% else %}
+            {% include 'partials/footer.html' %}
+        {% endif %}
+
+    </div>
+
+    {% include 'partials/script.html' %}
+
+    {% block script %}
+    {% endblock %}
+
+</body>
+</html>

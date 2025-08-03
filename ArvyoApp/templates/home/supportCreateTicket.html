@@ -1,0 +1,80 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Criar Ticket</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Criar Ticket</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Criar Ticket</h4>
+                            <span>Cancelar</span>
+                        </div>
+                        <div class="card-body">
+                            <form action="support-tickets">
+                                <div class="mb-3">
+                                    <label class="form-label">Qual o tipo de pergunta que você quer fazer?</label>
+                                    <select class="form-select">
+                                        <option> Ganhos</option>
+                                        <option> Saques</option>
+                                        <option> Perfil</option>
+                                        <option> Geral</option>
+                                        <option> Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Resposta do Funcionário</label>
+                                    <select class="form-select">
+                                        <option> Ganhos</option>
+                                        <option> Saques</option>
+                                        <option> Perfil</option>
+                                        <option> Geral</option>
+                                        <option> Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Qual idioma você prefere que a resposta seja?</label>
+                                    <select class="form-select">
+                                        <option> Ganhos</option>
+                                        <option> Saques</option>
+                                        <option> Perfil</option>
+                                        <option> Geral</option>
+                                        <option> Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Por favor, forneça uma descrição do problema que você está
+                                        enfrentando</label>
+                                    <textarea rows="5" class="form-control"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Criar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

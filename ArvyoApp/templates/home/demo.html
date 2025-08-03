@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+{% include 'partials/head.html' %}
+
+<body class="demo">
+
+{% include 'partials/preloader.html' %}
+
+    <div id="main-wrapper">
+        <div class="header landing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="navigation">
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="brand-logo m-0">
+                                    <a href="{% url 'index' %}">
+                                        <img src="/static/images/logo.png" alt="">
+                                    </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul class="navbar-nav ms-auto demo-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-intro">Início</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-pages">Páginas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-widgets">Widgets</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-features">Recursos</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-review">Avaliação</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#demo-support">Suporte</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header-right">
+                                    <div class="dark-light-toggle" onclick="themeToggle()">
+                                        <span class="dark"><i class="fi fi-rr-eclipse-alt"></i></span>
+                                        <span class="light"><i class="fi fi-rr-eclipse-alt"></i></span>
+                                    </div>
+                                    <a href="#" class="btn btn-primary">Comprar</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="demo-intro" id="demo-intro" data-scroll-index="0">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-6 col-md-6 my-5">
+                        <div class="demo-intro-content">
+                            <h1>Arvyo - Modelo de Painel de Administração HTML para Gestão Financeira Pessoal</h1>
+                            <p>Gestão Financeira Pessoal refere-se ao processo de gerenciar os recursos financeiros de um indivíduo ou de uma família com o objetivo de alcançar estabilidade financeira e cumprir metas financeiras de curto e longo prazo. </p>
+                        </div>
+                        <div class="demo-intro-counter">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3>45+
+                                        <span>Páginas</span>
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>100+
+                                        <span>Componentes</span>
+                                    </h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <h3>300+
+                                        <span>Widgets</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-intro-btn">
+                            <a href="#demo-pages" class="btn btn-primary me-3" data-scroll-nav="1">Ver Demonstração</a>
+                            <a href="#" class="btn btn-outline-primary">Comprar</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 py-md-5">
+                        <div class="row intro-card">
+                            <div class="col-xl-6 intro-card-up">
+                                <img src="/static/images/card/1.png" alt="" />
+                                <img src="/static/images/card/2.png" alt="" />
+                                <img src="/static/images/card/3.png" alt="" />
+                                <img src="/static/images/card/4.png" alt="" />
+                                <img src="/static/images/card/5.png" alt="" />
+                                <img src="/static/images/card/6.png" alt="" />
+                                <img src="/static/images/card/7.png" alt="" />
+                                <img src="/static/images/card/8.png" alt="" />
+                                <img src="/static/images/card/9.png" alt="" />
+                                <img src="/static/images/card/10.png" alt="" />
+                                <img src="/static/images/card/11.png" alt="" />
+                                <img src="/static/images/card/12.png" alt="" />
+                                <img src="/static/images/card/13.png" alt="" />
+                                <img src="/static/images/card/14.png" alt="" />
+                                <img src="/static/images/card/15.png" alt="" />
+                                <img src="/static/images/card/16.png" alt="" />
+                                <img src="/static/images/card/17.png" alt="" />
+                                <img src="/static/images/card/18.png" alt="" />
+                                <img src="/static/images/card/19.png" alt="" />
+                                <img src="/static/images/card/20.png" alt="" />
+                                <img src="/static/images/card/37.png" alt="" />
+                                </div>
+                            <div class="col-xl-6 intro-card-up">
+                                <img src="/static/images/card/21.png" alt="" />
+                                <img src="/static/images/card/22.png" alt="" />
+                                <img src="/static/images/card/23.png" alt="" />
+                                <img src="/static/images/card/24.png" alt="" />
+                                <img src="/static/images/card/25.png" alt="" />
+                                <img src="/static/images/card/26.png" alt="" />
+                                <img src="/static/images/card/27.png" alt="" />
+                                <img src="/static/images/card/28.png" alt="" />
+                                <img src="/static/images/card/29.png" alt="" />
+                                <img src="/static/images/card/30.png" alt="" />
+                                <img src="/static/images/card/31.png" alt="" />
+                                <img src="/static/images/card/32.png" alt="" />
+                                <img src="/static/images/card/33.png" alt="" />
+                                <img src="/static/images/card/34.png" alt="" />
+                                <img src="/static/images/card/35.png" alt="" />
+                                <img src="/static/images/card/36.png" alt="" />
+                                <img src="/static/images/card/39.png" alt="" />
+                                <img src="/static/images/card/40.png" alt="" />
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="demo section-padding" id="demo-pages">
+            <div class="container">
+                <div class="row py-lg-5 justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="section-title text-center">
+                            <span>Páginas</span>
+                            <h2>Explore um Pacote Repleto de Demonstrações Interativas e Vivas</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'index' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/dashboard.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Painel</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'wallets' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/wallets.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Carteiras</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'budgets' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/budgets.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Orçamentos</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'goals' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/goals.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Metas</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'profile' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/profile.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Perfil</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analytics' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Análise</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analyticsExpenses' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics-expenses.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Despesas</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analyticsIncome' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics-income.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Receita</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analyticsIncomeVsExpenses' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics-income-vs-expenses.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Receita vs Despesas</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analyticsBalance' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics-balance.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Saldo</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'analyticsTransactionHistory' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/analytics-transaction-history.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Histórico de Transações</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'support' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/support.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Suporte</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'affiliates' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/affiliates.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Afiliados</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settings' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Configurações</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsGeneral' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-general.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Geral</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsProfile' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-profile.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Perfil</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsBank' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-bank.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Banco</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsSecurity' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-security.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Segurança</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsSession' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-session.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Sessão</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsCategories' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-categories.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Categorias</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsCurrencies' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-currencies.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Moedas</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'settingsApi' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/settings-api.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Api</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'signin' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/signin.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Login</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'signup' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/signup.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Cadastro</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'reset' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/reset.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Redefinir Senha</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'locked' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/locked.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Tela Bloqueada</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'addBank' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/add-bank.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Adicionar Banco</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'addCard' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/add-card.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Adicionar Cartão</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'addNewAccount' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/add-new-account.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Adicionar Nova Conta</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'bankAddSuccessful' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/bank-add-successful.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Banco Adicionado com Sucesso</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'idFrontAndBackUpload' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/id-front-and-back-upload.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Fazer Upload do Documento</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'notifications' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/notifications.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Notificações</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'otpPhone' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/otp-phone.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Verificação por Telefone</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'otpCode' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/otp-code.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Verificação por Código</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'privacy' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/privacy.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+							<h4>Privacidade</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'verifiedId' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/verified-id.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>ID Verificada</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'verifyEmail' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/verify-email.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Verificar E-mail</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'verifyId' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/verify-id.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Verificar ID</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'verifyingId' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/verifying-id.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>Verificando ID</h4>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="demo_img">
+                            <a href="{% url 'pageError' %}" target="_blank">
+                                <div class="img-wrap">
+                                    <img src="/static/images/demo/404.png" alt="" class="img-fluid">
+                                </div>
+                            </a>
+                            <h4>404</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widgets-masonary section-padding" id="demo-widgets">
+            <div class="container">
+                <div class="row py-lg-5 justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="section-title text-center">
+                            <span>Widgets</span>
+                            <h2>Acelere Seu Desenvolvimento e Lance Rapidamente com Arvyo</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="masonary">
+                            <figure>
+                                <img src="/static/images/card/1.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/2.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/3.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/4.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/5.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/6.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/7.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/8.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/9.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/10.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/11.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/12.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/13.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/14.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/15.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/16.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/17.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/18.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/19.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/20.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/21.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/22.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/23.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/24.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/25.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/26.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/27.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/28.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/29.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/30.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/31.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/32.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/33.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/34.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/35.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/36.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/37.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/38.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/39.png" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="/static/images/card/40.png" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="features section-padding" id="demo-features">
+            <div class="container">
+                <div class="row py-lg-5 justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="section-title text-center">
+                            <span>Recursos</span>
+                            <h2>Recursos Extraordinários, Flexibilidade Infinita</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-magic-wand"></i>
+                            <h5>2 Cores de Tema</h5>
+                            <p>Incluímos 6 Cores de Tema pré-definidas com o Elegant Admin.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-moon"></i>
+                            <h5>Barra Lateral Escura e Clara</h5>
+                            <p>Barra lateral escura e clara incluídas para obter a aparência desejada.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-archive"></i>
+                            <h5>45+ Modelos de Página</h5>
+                            <p>Sim, temos 1 demo e mais de 45 páginas por demo para facilitar.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-settings-sliders"></i>
+                            <h5>150+ Componentes de UI</h5>
+                            <p>Quase 150+ Componentes de UI estão incluídos no Pacote de Administração Arvyo.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-brands-bootstrap"></i>
+                            <h5>Bootstrap 5x</h5>
+                            <p>Ele foi feito com Bootstrap 5 e tem um layout totalmente responsivo.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-diamond"></i>
+                            <h5>2000+ Ícones de Fonte</h5>
+                            <p>Muitos Ícones de Fonte estão incluídos aqui no pacote do Elegant Admin.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-laptop-mobile"></i>
+                            <h5>Totalmente Responsivo</h5>
+                            <p>Todo o layout do Arvyo Admin é Totalmente Responsivo e amplamente testado.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-brands-sass"></i>
+                            <h5>SassBase CSS</h5>
+                            <p>Nosso CSS é escrito em Sass Base para facilitar sua vida.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-shuffle"></i>
+                            <h5>Fácil de Personalizar</h5>
+                            <p>A personalização será fácil, pois entendemos sua dor.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-chart-pie"></i>
+                            <h5>Muitas Opções de Gráficos</h5>
+                            <p>Diga o que precisa, e nós temos. Sim, muitas variações para Gráficos.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rs-table"></i>
+                            <h5>Muitos Exemplos de Tabelas</h5>
+                            <p>Tabelas de Dados são um requisito inicial e nós as adicionamos.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-refresh"></i>
+                            <h5>Atualizações Regulares</h5>
+                            <p>Estamos constantemente atualizando nosso pacote com novos recursos.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rr-book"></i>
+                            <h5>Documentação Detalhada</h5>
+                            <p>Fizemos uma documentação detalhada, então será fácil de usar.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="features-content">
+                            <i class="fi fi-rs-user-headset"></i>
+                            <h5>Suporte Dedicado</h5>
+                            <p>Acreditamos que o suporte de alta qualidade é fundamental e nós o oferecemos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review" id="demo-review">
+            <div class="container">
+                <div class="row py-lg-5 justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="section-title text-center">
+                            <span>Avaliações</span>
+                            <h2>Desenvolvedores Reais, Opiniões Reais – Leia o que seus Colegas Têm a Dizer!</h2>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6>TpRx_Filo</h6>
+                                                <p> Qualidade do Código</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Para começar:
+                                        Ótimo suporte! responsivo e atencioso a um problema que tive.
+                                        Site funcional e super bem projetado.
+                                        Eu recomendo muito!
+                                        Muito obrigado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6>djjaron</h6>
+                                                <p>Disponibilidade de Recursos</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Ótima UI/UX com todos os recursos que cobre todos os fluxos e caminhos do usuário. Os componentes são bem organizados e a estilização é codificada de forma limpa. A+++++</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6> creativeorange3</h6>
+                                                <p> Qualidade do Design</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Produto realmente profissional e o criador está lá para ajudar sempre que você encontrar problemas. Tempo de resposta incrível também!
+                                        Definitivamente trabalharei com a Prexius novamente!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6> mciluke123</h6>
+                                                <p>Suporte ao Cliente</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Se eu pudesse dar 6 estrelas, eu daria. Excelente experiência com este modelo, fantasticamente projetado e codificado. O autor é super prestativo e amigável. Eu recomendaria este modelo e este autor a um amigo com certeza. Obrigado!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6>Minshan Cui</h6>
+                                                <p>Disponibilidade de Recursos</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>A qualidade do design é excelente, a customização e a flexibilidade são muito melhores do que outros produtos disponíveis no mercado. Eu recomendo fortemente o AdminMart a outros compradores.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="testimonial-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="/static/images/envato.png" alt="" class="w-auto me-3 rounded-circle"
+                                                width="50" height="50">
+                                            <div>
+                                                <h6>gsotirov</h6>
+                                                <p>Suporte ao Cliente</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex">
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                                <i class="fi fi-ss-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>Design incrível e, embora eu o tenha comprado por engano por não ver que era em React, o proprietário respondeu imediatamente e me forneceu o modelo HTML desejado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="customer-support section-padding" id="demo-support">
+            <div class="container">
+                <div class="row py-lg-5 justify-content-center">
+                    <div class="col-xl-7">
+                        <div class="section-title text-center">
+                            <span>Problema?</span>
+                            <h2>Não se preocupe, estou esperando sua pergunta</h2>
+                            <p>Atualizando minha caixa de entrada, esperando seu e-mail</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="customer-support-content">
+                            <span><i class="fi fi-brands-whatsapp"></i></span>
+                            <h4>+8801843666660</h4>
+                            <p>Fora do horário de sono, estou disponível no Whatsapp. Eu recomendo o Whatsapp</p>
+                            <a href="https://api.whatsapp.com/send?phone=0096897425480">Enviar Mensagem <i
+                                    class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="customer-support-content">
+                            <span><i class="fi fi-brands-skype"></i></span>
+                            <h4>sporsho9</h4>
+                            <p>Fora do horário de sono, estou disponível no Skype. Eu também recomendo o Skype</p>
+                            <a href="skype:profile_name?sporsho9">Adicionar Skype <i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="customer-support-content">
+                            <span><i class="fi fi-rr-envelope"></i></span>
+                            <h4>imsaifun@gmail.com</h4>
+                            <p>Quando você me envia um e-mail, recebo a notificação e respondo rapidamente</p>
+                            <a href="mailto:imsaifun@gmail.com">Enviar E-mail <i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="customer-support-content">
+                            <span><i class="fi fi-rr-headset"></i></span>
+                            <h4>Dúvida antes da compra</h4>
+                            <p>Precisa de mais design ou personalização? Não se preocupe com a Qualidade</p>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSflTWPNbUwxUvIDLWx8TlzmDOWt1PgNCX4_TZ59yok-MlzXkg/viewform"
+                                target="_blank">Contrate Agora
+                                <i class="la la-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-landing">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="copyright">
+                            <p>© Direitos Autorais
+                                <script>
+                                    var CurrentYear = new Date().getFullYear()
+                                    document.write(CurrentYear)
+                                </script>
+                                <a href="#">Arvyo</a> I Todos os Direitos Reservados
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="fi fi-brands-facebook"></i></a></li>
+                                <li><a href="#"><i class="fi fi-brands-twitter"></i></a></li>
+                                <li><a href="#"><i class="fi fi-brands-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fi fi-brands-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include 'partials/script.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+        <script src="/static/vendor/chartjs/chartjs.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet2.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet3.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet4.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Perfil</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Perfil</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-name">
+                                <div class="d-flex">
+                                    <img src="/static/images/avatar/1.jpg" alt="">
+                                    <div class="flex-grow-1">
+                                        <h4 class="mb-0">Henry John Paulin</h4>
+                                        <p>henry@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-reg">
+                                <div class="registered">
+                                    <h5>25 de Junho de 2025</h5>
+                                    <p>Registrado</p>
+                                </div>
+                                <span class="reg_divider"></span>
+                                <div class="rank">
+                                    <h5>Indicação</h5>
+                                    <p>05</p>
+                                </div>
+                            </div>
+                            <div class="profile-wallet-nav">
+                                <ul class="nav nav-tabs">
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#city-bank" class="active">
+                                            <span class="icons usd">
+                                                <i class="fi fi-rr-bank"></i>
+                                            </span>
+                                            City Bank
+                                            <span><i class="fi fi-bs-angle-right"></i></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#debit-card">
+                                            <span class="icons gift"><i class="fi fi-rr-credit-card"></i></span>
+                                            Cartão de Débito
+                                            <span><i class="fi fi-bs-angle-right"></i></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#visa-card">
+                                            <span class="icons cart"><i class="fi fi-brands-visa"></i></span>
+                                            Cartão Visa
+                                            <span><i class="fi fi-bs-angle-right"></i></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="tab" href="#cash">
+                                            <span class="icons link"><i
+                                                    class="fi fi-rr-money-bill-wave-alt"></i></span>
+                                            Dinheiro
+                                            <span><i class="fi fi-bs-angle-right"></i></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="tab-content profile-wallet-tab">
+                        <div class="tab-pane fade show active" id="city-bank">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="wallet-progress-data">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <span>Gasto</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                            <div class="text-end">
+                                                <span>Orçamento</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 25%;" role="progressbar">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span>25%</span>
+                                            <span>75%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">
+                                        City Bank
+                                    </h4>
+                                    <div id="area-chart-action" class="nav d-block">
+                                        <span class="active" data-bs-toggle="tab">
+                                            Dia
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Semana
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Mês
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Ano
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="profileWallet"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="debit-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="wallet-progress-data">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <span>Gasto</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                            <div class="text-end">
+                                                <span>Orçamento</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 25%;" role="progressbar">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span>25%</span>
+                                            <span>75%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">
+                                        Cartão de Débito
+                                    </h4>
+                                    <div id="area-chart-action2" class="nav d-block">
+                                        <span class="active" data-bs-toggle="tab">
+                                            Dia
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Semana
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Mês
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Ano
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="profileWallet2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="visa-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="wallet-progress-data">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <span>Gasto</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                            <div class="text-end">
+                                                <span>Orçamento</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 25%;" role="progressbar">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span>25%</span>
+                                            <span>75%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">
+                                        Cartão Visa
+                                    </h4>
+                                    <div id="area-chart-action3" class="nav d-block">
+                                        <span class="active" data-bs-toggle="tab">
+                                            Dia
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Semana
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Mês
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Ano
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="profileWallet3"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cash">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="wallet-progress-data">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <span>Gasto</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                            <div class="text-end">
+                                                <span>Orçamento</span>
+                                                <h3>$1458.30</h3>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 25%;" role="progressbar">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span>25%</span>
+                                            <span>75%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">
+                                        Dinheiro
+                                    </h4>
+                                    <div id="area-chart-action4" class="nav d-block">
+                                        <span class="active" data-bs-toggle="tab">
+                                            Dia
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Semana
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Mês
+                                        </span>
+                                        <span data-bs-toggle="tab">
+                                            Ano
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="profileWallet4"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

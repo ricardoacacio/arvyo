@@ -1,0 +1,51 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+<div class="content-body">
+    <div class="verification section-padding">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-xl-5 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Vincular um cartão de débito</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="bank-add-successful">
+                                <div class="row">
+                                    <div class="mb-3 col-xl-12">
+                                        <label class="form-label">Nome no cartão </label>
+                                        <input type="text" class="form-control" placeholder="Carla Pascle">
+                                    </div>
+                                    <div class="mb-3 col-xl-12">
+                                        <label class="form-label">Número do cartão </label>
+                                        <input type="text" class="form-control"
+                                            placeholder="5658 4258 6358 4756">
+                                    </div>
+                                    <div class="mb-3 col-xl-4">
+                                        <label class="form-label">Validade </label>
+                                        <input type="text" class="form-control" placeholder="10/22">
+                                    </div>
+                                    <div class="mb-3 col-xl-4">
+                                        <label class="form-label">CVC </label>
+                                        <input type="text" class="form-control" placeholder="125">
+                                    </div>
+                                    <div class="mb-3 col-xl-4">
+                                        <label class="form-label">CEP </label>
+                                        <input type="text" class="form-control" placeholder="2368">
+                                    </div>
+                                    <div class="text-center col-12">
+                                        <button type="submit" class="btn btn-success w-100">Salvar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

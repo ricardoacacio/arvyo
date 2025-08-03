@@ -1,0 +1,49 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="verification section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-8 col-md-7">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Adicionar Nova Conta</h4>
+                            </div>
+                            <div class="card-body add-bank-card">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="{% url 'addBank' %}" class="d-block">
+                                            <div class="add-bank-card-content">
+                                                <div class="flex-grow-1">
+                                                    <h5>Conta bancária</h5>
+                                                    <p>Use sua conta bancária para fazer compras e vendas. Os preços são
+                                                        fixos hoje. As transações podem levar de 4 a 5 dias para serem processadas</p>
+                                                    <p class="text-muted">Recomendado para investir grandes quantias</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="{% url 'addCard' %}" class="d-block">
+                                            <div class="add-bank-card-content">
+                                                <div class="flex-grow-1">
+                                                    <h5>Cartão de débito</h5>
+                                                    <p>Use qualquer cartão de débito Visa ou Mastercard para fazer pequenos
+                                                        investimentos. Adicione um banco ou carteira para vender</p>
+                                                    <p class="text-muted">Recomendado para investir pequenas quantias</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

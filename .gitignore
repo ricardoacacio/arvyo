@@ -1,0 +1,18 @@
+# Arquivos e diretórios do Django
+__pycache__/
+*.pyc
+
+# Ambiente virtual
+venv/
+.venv/
+
+# Banco de dados
+db.sqlite3
+
+# Arquivos de mídia e estáticos
+# Se você tiver pastas como media/ ou static/ que não devem ser versionadas, adicione aqui
+/media/
+/static/
+
+# Configurações sensíveis (se houver)
+.env

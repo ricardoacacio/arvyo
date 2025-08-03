@@ -1,0 +1,49 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="verification section-padding">
+                <div class="container h-100">
+                    <div class="row justify-content-center h-100 align-items-center">
+                        <div class="col-xl-5 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="verifying-id" class="identity-upload">
+                                        <div class="identity-content">
+                                            <h4>Envie seu documento de identidade</h4>
+                                            <span>(Carteira de Motorista ou RG)</span>
+                                            <p>O envio do seu documento de identidade nos ajuda a garantir a segurança dos seus fundos
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <label class="form-label">Enviar a frente do documento </label>
+                                                <span class="float-right">Tamanho máximo do arquivo é 2mb</span>
+                                            </div>
+                                            <div class="file-upload-wrapper" data-text="front.jpg">
+                                                <input name="file-upload-field" type="file" class="file-upload-field">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <label class="form-label">Enviar o verso do documento </label>
+                                                <span class="float-right">Tamanho máximo do arquivo é 2mb</span>
+                                            </div>
+                                            <div class="file-upload-wrapper" data-text="back.jpg">
+                                                <input name="file-upload-field" type="file" class="file-upload-field">
+                                            </div>
+                                        </div>
+                                        <div class="mt-5">
+                                            <button type="submit" class="btn btn-success w-100">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

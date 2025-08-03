@@ -1,0 +1,25 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="verification section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                        <div class="card">
+                            <div class="card-body identity-content">
+                                <span class="icon"><i class="fi fi-rr-envelope"></i></span>
+                                <p>Enviamos um e-mail de verificação para &nbsp;<strong
+                                        class="text-dark">exemplo@email.com</strong>. Clique no link
+                                    dentro dele para
+                                    começar!</p><a href="{% url 'signup' %}">O e-mail não chegou?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

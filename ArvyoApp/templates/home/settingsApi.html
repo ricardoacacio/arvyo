@@ -1,0 +1,130 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Api</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Api</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12">
+                    <div class="settings-menu">
+                        <a href="{% url 'settings' %}">Conta</a>
+                        <a href="{% url 'settingsGeneral' %}">Geral</a>
+                        <a href="{% url 'settingsProfile' %}">Perfil</a>
+                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
+                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                        <a href="{% url 'settingsSession' %}">Sessão</a>
+                        <a href="{% url 'settingsCategories' %}">Categorias</a>
+                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                        <a href="{% url 'settingsApi' %}">Api</a>
+                        <a href="{% url 'support' %}">Suporte</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <h4 class="card-title mb-3">Criar Chave API</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-xxl-6 col-xl-6 col-lg-6 mb-3"><label
+                                                    class="form-label">Gerar Nova
+                                                    Chave</label><input name="generateKey" type="text"
+                                                    class="form-control"></div>
+                                            <div class="col-xxl-6 col-xl-6 col-lg-6 mb-3"><label
+                                                    class="form-label">Confirmar
+                                                    Frase de Acesso</label><input name="confirmKey" type="text"
+                                                    class="form-control"></div>
+                                        </div>
+                                        <div class="mt-3"><button type="submit"
+                                                class="btn btn-primary mr-2">Salvar</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <h4 class="card-title mb-3">Suas Chaves API</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive api-table">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Chave</th>
+                                                    <th>Status</th>
+                                                    <th>Ação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>69e387f1-31c3-45ad-9c68-5a51e5e78b43</td>
+                                                    <td>
+                                                        <div class="form-check form-switch"><input
+                                                                class="form-check-input" type="checkbox" checked="">
+                                                        </div>
+                                                    </td>
+                                                    <td><span><i class="fi fi-rs-trash"></i></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>69e387f1-31c3-45ad-9c68-5a51e5e78b43</td>
+                                                    <td>
+                                                        <div class="form-check form-switch"><input
+                                                                class="form-check-input" type="checkbox"></div>
+                                                    </td>
+                                                    <td><span><i class="fi fi-rs-trash"></i></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>69e387f1-31c3-45ad-9c68-5a51e5e78b43</td>
+                                                    <td>
+                                                        <div class="form-check form-switch"><input
+                                                                class="form-check-input" type="checkbox"></div>
+                                                    </td>
+                                                    <td><span><i class="fi fi-rs-trash"></i></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>69e387f1-31c3-45ad-9c68-5a51e5e78b43</td>
+                                                    <td>
+                                                        <div class="form-check form-switch"><input
+                                                                class="form-check-input" type="checkbox"></div>
+                                                    </td>
+                                                    <td><span><i class="fi fi-rs-trash"></i></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>69e387f1-31c3-45ad-9c68-5a51e5e78b43</td>
+                                                    <td>
+                                                        <div class="form-check form-switch"><input
+                                                                class="form-check-input" type="checkbox"></div>
+                                                    </td>
+                                                    <td><span><i class="fi fi-rs-trash"></i></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

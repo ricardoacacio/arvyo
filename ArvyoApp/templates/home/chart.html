@@ -1,0 +1,177 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+        <script src="/static/vendor/chartjs/chartjs.js"></script>
+        <script src="/static/js/plugins/chartjs-bar.js"></script>
+        <script src="/static/js/plugins/chartjs-line.js"></script>
+        <script src="/static/js/plugins/chartjs-donut.js"></script>
+        <script src="/static/js/plugins/chartjs-bar-budget-period.js"></script>
+        <script src="/static/js/plugins/chartjs-bar-income-vs-expense.js"></script>
+        <script src="/static/js/plugins/chartjs-bar-weekly-expense.js"></script>
+        <script src="/static/js/plugins/chartjs-line-balance-overtime.js"></script>
+        <script src="/static/js/plugins/chartjs-line-balance-trend.js"></script>
+        <script src="/static/js/plugins/chartjs-line-balance-wallet.js"></script>
+        <script src="/static/js/plugins/chartjs-line-total-balance.js"></script>
+        <script src="/static/js/plugins/chartjs-donut-exchange.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet2.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet3.js"></script>
+        <script src="/static/js/plugins/chartjs-profile-wallet4.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Painel</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Painel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Barra </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsBar"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Linha </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsLine"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Rosquinha </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsDonut"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Receita vs Despesas </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsIncomeVsExpense"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Despesas Semanais </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsWeeklyExpenses"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Saldo ao longo do tempo </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsBalanceOvertime"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Tendência do Saldo </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsBalanceTrend"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Período Orçamentário </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsBudgetPeriod"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Saldo da Carteira </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsBalanceWallet"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Saldo Total </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsTotalBalance"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Troca de Rosquinhas </h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsDonutExchange"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Gráfico de Área</h4>
+                                <div id="area-chart-action">
+                                    <span> Dia </span>
+                                    <span> Semana </span>
+                                    <span> Mês </span>
+                                    <span> Ano </span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="profileWallet" class="chartjs"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

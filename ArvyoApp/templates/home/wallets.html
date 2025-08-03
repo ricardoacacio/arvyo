@@ -1,0 +1,277 @@
+{% extends '../layouts/layout.html' %}
+{% load home_tags %}  
+{% block content %}
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Carteiras</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Carteiras</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wallet-tab">
+                <div class="row g-0">
+                    <div class="col-xl-3">
+                        <div class="nav d-block">
+                            <div class="row">
+                                {% for account in user_accounts %}
+                                <div class="col-xl-12 col-md-6">
+                                    <div class="wallet-nav {% if forloop.first %}active{% endif %}" data-bs-toggle="pill" data-bs-target="#a{{ forloop.counter }}">
+                                        <div class="wallet-nav-icon">
+                                            <span><i class="fi fi-rr-bank"></i></span>
+                                        </div>
+                                        <div class="wallet-nav-text">
+                                            <h3>{{ account.name }}</h3>
+                                            <p>R${{ account.balance }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="add-card-link">
+                            <h5 class="mb-0">Adicionar nova carteira</h5>
+                            <a href="{% url 'addNewAccount' %}">
+                                <i class="fi fi-rr-square-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="tab-content wallet-tab-content">
+                            {% for account in user_accounts %}
+                            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="a{{ forloop.counter }}">
+                                <div class="wallet-tab-title">
+                                    <h3>{{ account.name }}</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="wallet-total-balance">
+                                                    <p class="mb-0">Saldo Total</p>
+                                                    <h2>R$ {{ account.balance }}</h2>
+                                                </div>
+                                                <div class="funds-credit">
+                                                    <p class="mb-0">Nome do Banco</p>
+                                                    <h5>{{ account.bank_name }}</h5>
+                                                </div>
+                                                <div class="funds-credit">
+                                                    <p class="mb-0">Status</p>
+                                                    <h5>{% if account.is_active %}Ativa{% else %}Inativa{% endif %}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="credit-card visa">
+                                            <div class="type-brand">
+                                                <h4>{{ account.name }}</h4>
+                                                <img src="/static/images/cc/visa.png" alt="">
+                                            </div>
+                                            <div class="cc-number">
+                                                <h6>1234</h6>
+                                                <h6>5678</h6>
+                                                <h6>7890</h6>
+                                                <h6>9875</h6>
+                                            </div>
+                                            <div class="cc-holder-exp">
+                                                <h5>Saiful Islam</h5>
+                                                <div class="exp"><span>VENC:</span><strong>12/21</strong></div>
+                                            </div>
+                                            <div class="cc-info">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col-5">
+                                                        <div class="d-flex">
+                                                            <p class="me-3">Status</p>
+                                                            <p><strong>Ativo</strong></p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="me-3">Moeda</p>
+                                                            <p><strong>BRL</strong></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="ms-3">
+                                                                <p>Limite de Crédito</p>
+                                                                <p><strong>2000 BRL</strong></p>
+                                                            </div>
+                                                            <div id="circle1"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="stat-widget-1">
+                                            <h6>Saldo Total</h6>
+                                            <h3>R$ {{ account.balance }}</h3>
+                                            <p>
+                                                <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                                Último mês <strong>$24,478</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                            <div class="stat-widget-1">
+                                                <h6>Despesas Mensais</h6>
+                                                <h3>R$ {{ expenses_by_account|get_item:account.id }}</h3>
+                                                <p>
+                                                    <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                                    Último mês <strong>$24,478</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <div class="col-xxl-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Saldo ao Longo do Tempo</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="chartjs-size-monitor">
+                                                    <div class="chartjs-size-monitor-expand">
+                                                        <div class=""></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink">
+                                                        <div class=""></div>
+                                                    </div>
+                                                </div>
+                                                <canvas id="chartjsBalanceOvertime_{{ account.pk }}"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Histórico de Transações</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="transaction-table">
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0 table-responsive-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Categoria</th>
+                                                                    <th>Data</th>
+                                                                    <th>Descrição</th>
+                                                                    <th>Valor</th>
+                                                                    <th>Moeda</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for transaction in transactions_by_account|get_item:account.id %}
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="table-category-icon">
+                                                                            <i class="{{ transaction.category.color_class }} {{ transaction.category.icon_class }}"></i>
+                                                                            {{ transaction.category.name }}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.date|date:"d.m.Y" }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.description }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.amount }}
+                                                                    </td>
+                                                                    <td>BRL</td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script src="/static/vendor/chartjs/chartjs.js"></script>
+{{ chart_data_by_account|json_script:"all-chart-data" }}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var allChartDataJSON = document.getElementById('all-chart-data').textContent;
+        var allChartData = JSON.parse(allChartDataJSON);
+
+        {% for account in user_accounts %}
+        var accountId = '{{ account.pk }}';
+        var chartData = allChartData[accountId];
+
+        if (chartData && chartData.labels && chartData.labels.length > 1) {
+            var ctx = document.getElementById('chartjsBalanceOvertime_{{ account.pk }}').getContext('2d');
+            
+            // Cria o gráfico com as opções
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Saldo da Conta',
+                        data: chartData.data,
+                        borderColor: '#1C5B72',
+                        backgroundColor: 'rgba(28, 91, 114, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                display: false
+                            }
+                        }
+                    },
+                },
+            });
+
+            // Força a atualização das opções imediatamente após a criação
+            myChart.options.scales.x.grid.display = false;
+            myChart.options.scales.y.grid.display = false;
+            myChart.options.scales.y.ticks.display = false;
+            myChart.update();
+        }
+        {% endfor %}
+    });
+</script>
+{% endblock content %}

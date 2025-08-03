@@ -1,0 +1,423 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+            <script src="/static/vendor/toastr/toastr.min.js"></script>
+            <script src="/static/vendor/toastr/toastr-init.js"></script>
+            <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+            <script src="/static/vendor/circle-progress/circle-progress-init.js"></script>
+            <script src="/static/vendor/chartjs/chartjs.js"></script>
+            <script src="/static/js/plugins/chartjs-bar-income-vs-expense.js"></script>
+            <script src="/static/js/plugins/chartjs-bar-weekly-expense.js"></script>
+            <script src="/static/js/plugins/chartjs-profile-wallet.js"></script>
+            <script src="/static/js/plugins/chartjs-profile-wallet2.js"></script>
+            <script src="/static/js/plugins/chartjs-profile-wallet3.js"></script>
+            <script src="/static/js/plugins/chartjs-profile-wallet4.js"></script>
+            <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+            <script src="/static/js/plugins/perfect-scrollbar-init.js"></script>
+            <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+            <script src="/static/js/plugins/circle-progress-init.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Painel</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Painel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="stat-widget-1">
+                            <h6>Saldo Total</h6>
+                            <h3>R$ {{ total_balance }}</h3>
+                            <p>
+                                <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                Último mês <strong>$24,478</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="stat-widget-1">
+                            <h6>Mudança Total do Período</h6>
+                            <h3>R$ {{ total_change }}</h3>
+                            <p>
+                                <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                Último mês <strong>$24,478</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="stat-widget-1">
+                            <h6>Despesas Totais do Período</h6>
+                            <h3>R$ {{ monthly_expenses }}</h3>
+                            <p>
+                                <span class="text-danger"><i class="fi fi-rr-arrow-trend-down"></i>2.47%</span>
+                                Último mês <strong>$24,478</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="stat-widget-1">
+                            <h6>Renda Total do Período</h6>
+                            <h3>R$ {{ monthly_income }}</h3>
+                            <p>
+                                <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                Último mês <strong>$24,478</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-8 col-xl-8 col-lg-6">
+                        <div class="card">
+                            <div class="card-header balance-trend">
+                                <h4 class="card-title">Tendências de Saldo <br> <span>$221,478</span></h4>
+                                <div class="trend-stats">
+                                    <p class="mb-0">Último Mês</p>
+                                    <span class="text-success">
+                                        <i class="fi fi-rr-arrow-trend-up"></i>
+                                        12.25%
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="profileWallet"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-xxl-4 col-xl-4 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Detalhes das Despesas Mensais</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="progress-stacked">
+                                    <div class="progress" style="width: 38%">
+                                        <div class="progress-bar bg-orange-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 22%">
+                                        <div class="progress-bar bg-amber-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 12%">
+                                        <div class="progress-bar bg-yellow-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 9%">
+                                        <div class="progress-bar bg-lime-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 8%">
+                                        <div class="progress-bar bg-green-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 6%">
+                                        <div class="progress-bar bg-cyan-500"></div>
+                                    </div>
+                                    <div class="progress" style="width: 5%">
+                                        <div class="progress-bar bg-stone-500"></div>
+                                    </div>
+                                </div>
+                                <div class="list-1 mt-3">
+                                    <ul>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-orange-500"></i>Alimentação</p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-amber-500"></i>Transporte</p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-yellow-500"></i>Saúde
+                                            </p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-lime-500"></i>Educação</p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-green-500"></i>Roupas</p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-cyan-500"></i>Animais de Estimação</p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                        <li>
+                                            <p class="mb-0"><i class="fi fi-ss-circle text-stone-500"></i>Entretenimento
+                                            </p>
+                                            <h5 class="mb-0"><span>$1200</span>38%</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Orçamentos Mensais</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="budget-content">
+                                    <ul>
+                                        <li>
+                                            <div class="budget-info flex-grow-2 me-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <h5 class="mb-1"><i class="bg-green-500 fi fi-rr-carrot"></i>Mercados
+                                                        e Hortifrútis</h5>
+                                                    <p class="mb-0"><strong>75 </strong>/ 100</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-green-500" role="progressbar"
+                                                        style="width: 75%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="budget-info flex-grow-2 me-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <h5 class="mb-1"><i
+                                                            class="bg-cyan-500 fi fi-rr-bus"></i>Transporte
+                                                    </h5>
+                                                    <p class="mb-0"><strong>25 </strong>/ 100</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-cyan-500" role="progressbar"
+                                                        style="width: 25%;"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="budget-info flex-grow-2 me-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <h5 class="mb-1"><i class="bg-sky-500 fi fi-sr-cat"></i>Animais de Estimação</h5>
+                                                    <p class="mb-0"><strong>50 </strong>/ 100</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-sky-500" role="progressbar"
+                                                        style="width: 50%;"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="budget-info flex-grow-2 me-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <h5 class="mb-1"><i
+                                                            class="bg-indigo-500 fi fi-rr-graduation-cap"></i>Educação
+                                                    </h5>
+                                                    <p class="mb-0"><strong>45 </strong>/ 100</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-indigo-500" role="progressbar"
+                                                        style="width: 45%;"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="budget-info flex-grow-2 me-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <h5 class="mb-1"><i
+                                                            class="bg-violet-500 fi fi-rr-shirt-long-sleeve"></i>Roupas
+                                                    </h5>
+                                                    <p class="mb-0"><strong>35 </strong>/ 100</p>
+                                                </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-violet-500" role="progressbar"
+                                                        style="width: 35%;"></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-xxl-8 col-xl-8 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Renda vs Despesas Mensais</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsIncomeVsExpense"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Despesas Semanais</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chartjsWeeklyExpenses"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Histórico de Pagamentos</h4>
+                                <a href="#">Ver mais</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="invoice-content">
+                                    <ul>
+                                        <li class="d-flex justify-content-between active">
+                                            <div class="d-flex align-items-center">
+                                                <div class="invoice-info">
+                                                    <h5 class="mb-0">Eletricidade</h5>
+                                                    <p>5 de janeiro de 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-2">+450.00</h5>
+                                                <span class=" text-white bg-success">Pago</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="invoice-info">
+                                                    <h5 class="mb-0">Internet</h5>
+                                                    <p>5 de janeiro de 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-2">+450.00</h5>
+                                                <span class=" text-white bg-warning">Vencido</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="invoice-info">
+                                                    <h5 class="mb-0">Apple Music</h5>
+                                                    <p>5 de janeiro de 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-2">+450.00</h5>
+                                                <span class=" text-white bg-danger">Cancelado</span>
+                                            </div>
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="invoice-info">
+                                                    <h5 class="mb-0">Mantimentos</h5>
+                                                    <p>5 de janeiro de 2025</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-2">+450.00</h5>
+                                                <span class=" text-white bg-success">Pago</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Metas de Poupança</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-3 col-sm-6">
+                                        <div class="circle-progress-content">
+                                            <div id="circle1"><span>80%</span></div>
+                                            <h6>Férias</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-3 col-sm-6">
+                                        <div class="circle-progress-content">
+                                            <div id="circle2"><span>80%</span></div>
+                                            <h6>Presente</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-3 col-sm-6">
+                                        <div class="circle-progress-content">
+                                            <div id="circle3"><span>80%</span></div>
+                                            <h6>Carro Novo</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-3 col-sm-6">
+                                        <div class="circle-progress-content">
+                                            <div id="circle4"><span>80%</span></div>
+                                            <h6>Laptop</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Histórico de Transações</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="transaction-table">
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-responsive-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categoria</th>
+                                                    <th>Data</th>
+                                                    <th>Descrição</th>
+                                                    <th>Valor</th>
+                                                    <th>Moeda</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for transaction in recent_transactions %}
+                                                <tr>
+                                                    <td>
+                                                        <span class="table-category-icon">
+                                                            <i class="{{ transaction.category.color_class }} {{ transaction.category.icon_class }}"></i>
+                                                            {% if transaction.category %}
+                                                                {{ transaction.category.name }}
+                                                            {% else %}
+                                                                Sem Categoria
+                                                            {% endif %}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        {{ transaction.date|date:"d.m.Y" }}
+                                                    </td>
+                                                    <td>
+                                                        {{ transaction.description }}
+                                                    </td>
+                                                    <td>
+                                                        {{ transaction.amount }}
+                                                    </td>
+                                                    <td>USD</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

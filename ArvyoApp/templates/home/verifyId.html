@@ -1,0 +1,29 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="verification section-padding">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-items-center">
+                    <div class="col-xl-5 col-md-6">
+                        <div class="card">
+                            <div class="card-body identity-content">
+                                <form action="id-front-and-back-upload">
+                                    <span class="icon"><i class="fi fi-bs-shield-keyhole"></i></span>
+                                    <h4>Por favor, verifique sua identidade antes de adicionar seu cartão</h4>
+                                    <p>O envio da sua identidade ajuda a garantir a segurança e a proteção dos seus fundos
+                                    </p>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success pl-5 pr-5">Enviar ID</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

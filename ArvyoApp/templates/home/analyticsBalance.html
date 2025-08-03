@@ -1,0 +1,68 @@
+{% extends '../layouts/layout.html' %}
+
+{% block script %}
+            <script src="/static/vendor/chartjs/chartjs.js"></script>
+            <script src="/static/js/plugins/chartjs-line-balance-wallet.js"></script>
+            <script src="/static/js/plugins/chartjs-line-total-balance.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-xl-4">
+                                    <div class="page-title-content">
+                                        <h3>Saldo</h3>
+                                        <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="breadcrumbs"><a href="#">Início </a>
+                                        <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                        <a href="#">Saldo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xxl-12 col-xl-12">
+                        <div class="settings-menu">
+                            <a href="{% url 'analytics' %}">Análise</a>
+                            <a href="{% url 'analyticsExpenses' %}">Despesas</a>
+                            <a href="{% url 'analyticsIncome' %}">Receita</a>
+                            <a href="{% url 'analyticsIncomeVsExpenses' %}">Receita vs Despesas</a>
+                            <a href="{% url 'analyticsBalance' %}">Saldo</a>
+                            <a href="{% url 'analyticsTransactionHistory' %}">Histórico de Transações</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Saldo Total </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="chartjsTotalBalance"></canvas>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Saldo por Carteira </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="chartjsBalanceWallet"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

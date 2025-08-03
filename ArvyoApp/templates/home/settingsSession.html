@@ -1,0 +1,353 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Sessão</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Sessão</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12">
+                    <div class="settings-menu">
+                        <a href="{% url 'settings' %}">Conta</a>
+                        <a href="{% url 'settingsGeneral' %}">Geral</a>
+                        <a href="{% url 'settingsProfile' %}">Perfil</a>
+                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
+                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                        <a href="{% url 'settingsSession' %}">Sessão</a>
+                        <a href="{% url 'settingsCategories' %}">Categorias</a>
+                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                        <a href="{% url 'settingsApi' %}">Api</a>
+                        <a href="{% url 'support' %}">Suporte</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xxl-12">
+                            <h4 class="card-title mb-3">Aplicações de Terceiros </h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center"><span
+                                            class="me-3 icon-circle bg-warning text-white"><i
+                                                class="fi fi-rs-messages-question"></i></span>
+                                        <div>
+                                            <h5 class="mb-0">Você ainda não autorizou nenhuma aplicação.</h5>
+                                            <p>Depois de conectar uma aplicação à sua conta, você pode gerenciar ou
+                                                revogar seu
+                                                acesso aqui.</p><a class="btn btn-primary">Autorizar agora</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title mb-3">Sessões Web</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive table-icon">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Logado em</th>
+                                                    <th>Navegador</th>
+                                                    <th>Endereço IP</th>
+                                                    <th>Perto de</th>
+                                                    <th>Atual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1 dia atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td>250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1 dia atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td>250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1 dia atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td>250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title mb-3">Dispositivos Confirmados</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Confirmado</th>
+                                                    <th>Navegador</th>
+                                                    <th>Endereço IP</th>
+                                                    <th>Perto de</th>
+                                                    <th>Atual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1 dia atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td> 250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8 dias atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td> 250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>15 dias atrás</td>
+                                                    <td>Chrome (Windows)</td>
+                                                    <td> 250.364.239.254</td>
+                                                    <td>Bangladesh, Dhaka</td>
+                                                    <td><span><i
+                                                                class="fi fi-bs-check text-success me-1"></i></span><span><i
+                                                                class="fi fi-sr-cross-small text-danger"></i></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title mb-3">Atividade da Conta</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ação</th>
+                                                    <th>Origem</th>
+                                                    <th>Endereço IP</th>
+                                                    <th>Localização</th>
+                                                    <th>Quando</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">cerca de 1 hora atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">cerca de 2 horas atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>falha no segundo fator</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">cerca de 2 horas atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>confirmação do dispositivo concluída</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">1 dia atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>login</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">1 dia atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.254</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">1 dia atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>logout</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>login</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>logout</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>logout</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>confirmação do dispositivo concluída</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>login</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">8 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>logout</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>login</td>
+                                                    <td>web</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>logout</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>web</td>
+                                                    <td>23.106.249.39</td>
+                                                    <td>Singapura</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>segundo fator verificado</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>xs verificado</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>xs adicionado</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>login</td>
+                                                    <td>api</td>
+                                                    <td>157.119.239.214</td>
+                                                    <td>Bangladesh</td>
+                                                    <td><a href="#">15 dias atrás</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="card-title mb-3">Fechar Conta</h4>
+                            <div class="card transparent">
+                                <div class="card-body">
+                                    <p>Retire os fundos e feche sua conta - <span class="text-danger">isso não pode
+                                            ser desfeito</span></p><a href="#" class="btn btn-danger">Fechar Conta</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

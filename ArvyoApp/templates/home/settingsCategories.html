@@ -1,0 +1,447 @@
+{% extends '../layouts/layout.html' %}
+
+{% block content %}
+
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-xl-4">
+                                <div class="page-title-content">
+                                    <h3>Categorias</h3>
+                                    <p class="mb-2">Bem-vindo à Gestão Financeira Arvyo</p>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="breadcrumbs"><a href="#">Início </a>
+                                    <span><i class="fi fi-rr-angle-small-right"></i></span>
+                                    <a href="#">Categorias</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12 col-xl-12">
+                    <div class="settings-menu">
+                        <a href="{% url 'settings' %}">Conta</a>
+                        <a href="{% url 'settingsGeneral' %}">Geral</a>
+                        <a href="{% url 'settingsProfile' %}">Perfil</a>
+                        <a href="{% url 'settingsBank' %}">Adicionar Banco</a>
+                        <a href="{% url 'settingsSecurity' %}">Segurança</a>
+                        <a href="{% url 'settingsSession' %}">Sessão</a>
+                        <a href="{% url 'settingsCategories' %}">Categorias</a>
+                        <a href="{% url 'settingsCurrencies' %}">Moedas</a>
+                        <a href="{% url 'settingsApi' %}">Api</a>
+                        <a href="{% url 'support' %}">Suporte</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-xxl-4 col-xl-4 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Criar uma nova categoria</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="create-new-category">
+                                        <form class="row">
+                                            <div class="mb-3 col-12">
+                                                <label class="form-label">Nome </label>
+                                                <input type="text" class="form-control" placeholder="nome da categoria">
+                                            </div>
+                                            <div class="mb-3 col-12">
+                                                <label class="form-label">Tipo </label>
+                                                <select class="form-select">
+                                                    <option selected>Escolha...</option>
+                                                    <option>Renda</option>
+                                                    <option>Despesas</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Ícone </label>
+                                                <select class="form-select">
+                                                    <option selected>Escolha...</option>
+                                                    <option>...</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-6">
+                                                <label class="form-label">Cor </label>
+                                                <select class="form-select">
+                                                    <option selected>Escolha...</option>
+                                                    <option>...</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-success w-100">Criar nova categoria</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-8 col-xl-8 col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Categorias de Renda</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="category-type">
+                                        <ul>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-purple-500 fi fi-rr-usd-circle"></i>
+                                                        Salário</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-red-500 fi fi-rr-store-alt"></i>
+                                                        Negócios</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-orange-500 fi fi-rr-life-ring"></i>
+                                                        Cliente</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-amber-500 fi fi-rr-gift"></i> Presentes</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-yellow-500 fi fi-bs-user-shield"></i>
+                                                        Seguro
+                                                    </span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-lime-500 fi fi-rr-sack-dollar"></i>
+                                                        Empréstimo</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-green-500 fi fi-rr-add-document"></i>
+                                                        Outros</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Categorias de Despesas</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="category-type">
+                                        <ul>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-emerald-500 fi fi-rr-barber-shop"></i>
+                                                        Beleza</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-teal-500 fi fi-rr-receipt"></i> Contas e
+                                                        Taxas</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-cyan-500 fi fi-rr-car-side"></i> Carro</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-sky-500 fi fi-rr-graduation-cap"></i>
+                                                        Educação</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-blue-500 fi fi-rr-clapperboard-play"></i>
+                                                        Entretenimento</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-indigo-500 fi fi-sr-family"></i> Família</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-violet-500 fi fi-rr-hamburger-soda"></i> Comida
+                                                        e
+                                                        Bebida</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-purple-500 fi fi-rr-money-bills-simple"></i>
+                                                        Salário</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-fuchsia-500 fi fi-rs-pineapple"></i>
+                                                        Supermercado</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-pink-500 fi fi-rr-user-md"></i>
+                                                        Saúde</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-purple-500 fi fi-rr-home"></i> Casa</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-rose-500 fi fi-rs-shopping-bag"></i>
+                                                        Compras</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-orange-500 fi fi-br-running"></i> Esportes
+                                                    </span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-emerald-500 fi fi-rr-bowling"></i>
+                                                        Hobby</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-teal-500 fi fi-rr-plane"></i> Viagem</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-cyan-500 fi fi-rr-bus"></i>
+                                                        Transporte</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left-category">
+                                                    <span class="drag-icon"><i
+                                                            class="fi fi-ss-grip-lines"></i></span>
+                                                    <span class="category-icon"><i
+                                                            class="bg-indigo-500 fi fi-rr-briefcase"></i>
+                                                        Trabalho</span>
+                                                </div>
+                                                <div class="right-category">
+                                                    <span><i class="fi fi-rs-pencil"></i></span>
+                                                    <span><i class="fi fi-rr-eye"></i></span>
+                                                    <span><i class="fi fi-rr-trash"></i></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
