@@ -143,15 +143,7 @@
                                                 <h4 class="card-title">Saldo ao Longo do Tempo</h4>
                                             </div>
                                             <div class="card-body">
-                                                <div class="chartjs-size-monitor">
-                                                    <div class="chartjs-size-monitor-expand">
-                                                        <div class=""></div>
-                                                    </div>
-                                                    <div class="chartjs-size-monitor-shrink">
-                                                        <div class=""></div>
-                                                    </div>
-                                                </div>
-                                                <canvas id="chartjsBalanceOvertime_{{ account.pk }}"></canvas>
+                                                <div id="apexChartBalanceOvertime_{{ account.pk }}"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -212,6 +204,7 @@
     </div>
     
 <script src="/static/vendor/chartjs/chartjs.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 {{ chart_data_by_account|json_script:"all-chart-data" }}
 
 <script>
@@ -224,54 +217,67 @@
         var chartData = allChartData[accountId];
 
         if (chartData && chartData.labels && chartData.labels.length > 1) {
-            var ctx = document.getElementById('chartjsBalanceOvertime_{{ account.pk }}').getContext('2d');
-            
-            // Cria o gráfico com as opções
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: chartData.labels,
-                    datasets: [{
-                        label: 'Saldo da Conta',
-                        data: chartData.data,
-                        borderColor: '#1C5B72',
-                        backgroundColor: 'rgba(28, 91, 114, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                    },
-                    scales: {
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        },
-                        y: {
-                            beginAtZero: false,
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                display: false
-                            }
+            // Checa se o canvas do ApexCharts existe
+            var apexChartElement = document.getElementById('apexChartBalanceOvertime_{{ account.pk }}');
+
+            if (apexChartElement) {
+                // Inicializa o gráfico com ApexCharts
+                var options = {
+                    series: [{
+                        name: "Saldo da Conta",
+                        data: chartData.data
+                    }],
+                    chart: {
+                        type: 'line',
+                        height: 350,
+                        toolbar: {
+                            show: false
                         }
                     },
-                },
-            });
-
-            // Força a atualização das opções imediatamente após a criação
-            myChart.options.scales.x.grid.display = false;
-            myChart.options.scales.y.grid.display = false;
-            myChart.options.scales.y.ticks.display = false;
-            myChart.update();
+                    xaxis: {
+                        categories: chartData.labels,
+                        labels: {
+                            show: true
+                        },
+                        axisTicks: {
+                            show: false
+                        }
+                    },
+                    yaxis: {
+                        labels: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        show: false
+                    },
+                    stroke: {
+                        curve: 'smooth',
+                        width: 3,
+                        colors: ['#1C5B72'] // Cor da linha, mais escura
+                    },
+                    tooltip: {
+                        enabled: true
+                    },
+                    markers: {
+                        size: 0
+                    }
+                };
+                var chart = new ApexCharts(apexChartElement, options);
+                chart.render();
+            } else {
+                // Mantenha o código Chart.js para outros gráficos, se houver
+                // Apenas para ilustrar a estratégia híbrida.
+                var ctx = document.getElementById('chartjsBalanceOvertime_{{ account.pk }}');
+                if (ctx) {
+                    new Chart(ctx, {
+                        // ... opções do Chart.js aqui
+                    });
+                }
+            }
         }
         {% endfor %}
     });
 </script>
+
 {% endblock content %}
