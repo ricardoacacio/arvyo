@@ -58,89 +58,59 @@ def index(request):
 @login_required
 def wallets(request):
     user = request.user
-    
-    user_accounts = Account.objects.filter(user=user).order_by('name')
-    user_cards = Card.objects.filter(user=user).order_by('name_on_card')
-    
-    transactions_by_account = {}
+
+    # Busca todas as contas e cartões do usuário separadamente
+    user_accounts = Account.objects.filter(user=user)
+    user_cards = Card.objects.filter(user=user)
+
+    # Calculos de despesas e transações, adaptados para contas e cartões
     expenses_by_account = {}
-    chart_data_by_account = {}
-    
-    today = timezone.localdate()
-    month_start = today.replace(day=1)
+    transactions_by_account = {}
+    expenses_by_card = {}
+    transactions_by_card = {}
 
     for account in user_accounts:
-        transactions_by_account[account.id] = Transaction.objects.filter(account=account).order_by('-date')[:5]
+        transactions = Transaction.objects.filter(account=account, user=user).order_by('-date')
+        total_expense = transactions.filter(transaction_type='expense').aggregate(Sum('amount'))['amount__sum'] or Decimal(0)
         
-        all_transactions_for_account_this_month = Transaction.objects.filter(
-            account=account,
-            date__gte=month_start
-        )
+        expenses_by_account[account.id] = total_expense
+        transactions_by_account[account.id] = transactions
         
-        monthly_expenses_for_account = Decimal(0)
-        total_transactions_sum = Decimal(0)
+    for card in user_cards:
+        transactions = Transaction.objects.filter(card=card, user=user).order_by('-date')
+        total_expense = transactions.filter(transaction_type='expense').aggregate(Sum('amount'))['amount__sum'] or Decimal(0)
         
-        for transaction in all_transactions_for_account_this_month:
-            if transaction.transaction_type == 'expense':
-                monthly_expenses_for_account += transaction.amount
-                total_transactions_sum -= transaction.amount
-            elif transaction.transaction_type == 'income':
-                total_transactions_sum += transaction.amount
-
-        expenses_by_account[account.id] = monthly_expenses_for_account
+        # Adiciona o limite disponível ao objeto do cartão
+        card.available_limit = card.limit - total_expense
         
-        transactions_this_month = Transaction.objects.filter(
-            account=account,
-            date__gte=month_start
-        ).order_by('date')
-        
-        balance_before_month = account.balance - total_transactions_sum
-
-        dates = []
-        balances = []
-        
-        current_balance = balance_before_month
-
-        dates.append(month_start.strftime('%d/%m'))
-        balances.append(float(current_balance))
-
-        for transaction in transactions_this_month:
-            if transaction.transaction_type == 'expense':
-                current_balance -= transaction.amount
-            elif transaction.transaction_type == 'income':
-                current_balance += transaction.amount
-            dates.append(transaction.date.strftime('%d/%m'))
-            balances.append(float(current_balance))
-            
-        chart_data_by_account[account.id] = {
-            'labels': dates,
-            'data': balances,
-        }
+        expenses_by_card[card.id] = total_expense
+        transactions_by_card[card.id] = transactions
     
-    data = {
-        'title': 'Carteiras',
+    context = {
         'user_accounts': user_accounts,
         'user_cards': user_cards,
-        'transactions_by_account': transactions_by_account,
         'expenses_by_account': expenses_by_account,
-        'chart_data_by_account': chart_data_by_account,
+        'transactions_by_account': transactions_by_account,
+        'expenses_by_card': expenses_by_card,
+        'transactions_by_card': transactions_by_card,
     }
-    
-    return render(request, "home/wallets.html", data)
+
+    return render(request, 'home/wallets.html', context)
 
 @login_required
-def wallet_detail(request, account_id):
-    user = request.user
-    account = get_object_or_404(Account, pk=account_id, user=user)
-    transactions = Transaction.objects.filter(account=account).order_by('-date')
-    
-    data = {
-        'title': 'Detalhes da Carteira',
-        'account': account,
-        'transactions': transactions,
-    }
-    
-    return render(request, "home/wallet_detail.html", data)
+def wallet_detail(request, wallet_type, pk):
+    if wallet_type == 'account':
+        wallet = get_object_or_404(Account, pk=pk, user=request.user)
+        transactions = Transaction.objects.filter(account=wallet, user=request.user).order_by('-date')
+    elif wallet_type == 'card':
+        wallet = get_object_or_404(Card, pk=pk, user=request.user)
+        transactions = Transaction.objects.filter(card=wallet, user=request.user).order_by('-date')
+    else:
+        # Se o tipo de carteira for inválido, redireciona de volta para a página de carteiras.
+        return redirect('wallets')
+
+    context = {'wallet': wallet, 'transactions': transactions, 'wallet_type': wallet_type}
+    return render(request, 'home/wallet_detail.html', context)
 
 def addBank(request):
     if request.method == 'POST':
@@ -192,6 +162,11 @@ def addCard(request):
         brand = request.POST.get('brand')
         expiration_date = request.POST.get('expiration_date')
         
+        # --- LINHA ADICIONADA/MODIFICADA ---
+        limit_str = request.POST.get('limit') # Captura o valor do limite como string
+        card_limit = Decimal(limit_str) if limit_str else Decimal('0.00') # Converte para Decimal
+        # --- FIM DA LINHA ADICIONADA/MODIFICADA ---
+        
         if len(card_number_raw) >= 8:
             first_four = card_number_raw[:4]
             last_four = card_number_raw[-4:]
@@ -201,11 +176,12 @@ def addCard(request):
         
         Card.objects.create(
             user=request.user,
-            card_name=card_name, # Corrigido: o valor é passado para o modelo
+            card_name=card_name,
             name_on_card=name_on_card,
             card_number_masked=card_number_masked,
             expiration_date=expiration_date,
-            brand=brand
+            brand=brand,
+            limit=card_limit # --- Adicionado o campo 'limit' aqui ---
         )
         return redirect('wallets')
     
@@ -223,6 +199,41 @@ def delete_credit_card(request, card_id):
     card = get_object_or_404(Card, id=card_id, user=request.user)
     card.delete()
     return redirect('settingsBank')
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth.models import User
+
+def signin(request):
+    # Se o usuário já estiver logado, redireciona para a página inicial
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    if request.method == 'POST':
+        email_or_username = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Tenta encontrar o usuário pelo email ou username
+        try:
+            user = User.objects.get(email=email_or_username)
+            username = user.username
+        except User.DoesNotExist:
+            username = email_or_username
+
+        # Usa a função de autenticação do Django
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            # Se o usuário for válido, ele é logado
+            login(request, user)
+            return redirect('index')
+        else:
+            # Se a autenticação falhar, exibe uma mensagem de erro
+            messages.error(request, "Email/Usuário ou senha inválidos.")
+
+    # Renderiza a página de login (para requisições GET ou falhas no POST)
+    return render(request, "home/signin.html")
 
 def index2(request): data = {'title': 'About Us', 'subTitle': 'About Us'}; return render(request,"home/index2.html", data)
 def addNewAccount(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/addNewAccount.html", data)
@@ -256,7 +267,6 @@ def settingsGeneral(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank
 def settingsProfile(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsProfile.html", data)
 def settingsSecurity(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsSecurity.html", data)
 def settingsSession(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/settingsSession.html", data)
-def signin(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/signin.html", data)
 def signup(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/signup.html", data)
 def support(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/support.html", data)
 def supportCreateTicket(request): data = {'title': 'Add Bank', 'subTitle': 'Add Bank'}; return render(request, "home/supportCreateTicket.html", data)

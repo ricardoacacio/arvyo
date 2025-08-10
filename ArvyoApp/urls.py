@@ -62,7 +62,7 @@ urlpatterns = [
     path('verify-id', homeViews.verifyId, name='verifyId'),
     path('verifying-id', homeViews.verifyingId, name='verifyingId'),
     path('wallets', homeViews.wallets, name='wallets'),
-    path('wallets/<int:account_id>/', homeViews.wallet_detail, name='wallet_detail'),
+    path('wallets/<str:wallet_type>/<int:pk>/', homeViews.wallet_detail, name='wallet_detail'),
     
     # CORRIGIDO: Use 'homeViews' em vez de 'views'
     path('excluir-conta/<int:account_id>/', homeViews.delete_bank_account, name='deleteBankAccount'),

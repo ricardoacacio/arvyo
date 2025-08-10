@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 {% include 'partials/head.html' %}
@@ -39,7 +38,8 @@
                         <div class="col-lg-6">
                             <div class="auth-form">
                                 <h4>Entrar</h4>
-                                <form action="otp-phone">
+                                <form method="POST" action="{% url 'signin' %}">
+                                    {% csrf_token %}
                                     <div class="row">
                                         <div class="col-12 mb-3">
                                             <label class="form-label">E-mail</label>

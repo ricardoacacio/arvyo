@@ -41,7 +41,21 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                            </div>
+
+                                {% for card in user_cards %}
+                                <div class="col-xl-12 col-md-6">
+                                    <div class="wallet-nav" data-bs-toggle="pill" data-bs-target="#c{{ forloop.counter }}">
+                                        <div class="wallet-nav-icon">
+                                            <span><i class="fi fi-rr-credit-card"></i></span>
+                                        </div>
+                                        <div class="wallet-nav-text">
+                                            <h3>{{ card.card_name }}</h3>
+                                            <p>{{ card.brand }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                </div>
                         </div>
                         <div class="add-card-link">
                             <h5 class="mb-0">Adicionar nova carteira</h5>
@@ -196,7 +210,152 @@
                                 </div>
                             </div>
                             {% endfor %}
-                        </div>
+
+                            {% for card in user_cards %}
+                            <div class="tab-pane fade" id="c{{ forloop.counter }}">
+                                <div class="wallet-tab-title">
+                                    <h3>{{ card.card_name }}</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="wallet-total-balance">
+                                                    <p class="mb-0">Bandeira</p>
+                                                    <h2>{{ card.brand }}</h2>
+                                                </div>
+                                                <div class="funds-credit">
+                                                    <p class="mb-0">Nome do Titular</p>
+                                                    <h5>{{ card.name_on_card }}</h5>
+                                                </div>
+                                                <div class="funds-credit">
+                                                    <p class="mb-0">Data de Expiração</p>
+                                                    <h5>{{ card.expiration_date|date:"m/y" }}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="credit-card visa">
+                                            <div class="type-brand">
+                                                <h4>{{ card.card_name }}</h4>
+                                                <img src="/static/images/cc/{{ card.brand|lower }}.png" alt="">
+                                            </div>
+                                            <div class="cc-number">
+                                                <h6>****</h6>
+                                                <h6>****</h6>
+                                                <h6>****</h6>
+                                                <h6>{{ card.card_number_masked }}</h6>
+                                            </div>
+                                            <div class="cc-holder-exp">
+                                                <h5>{{ card.name_on_card }}</h5>
+                                                <div class="exp"><span>VENC:</span><strong>{{ card.expiration_date|date:"m/y" }}</strong></div>
+                                            </div>
+                                            <div class="cc-info">
+                                                <div class="row justify-content-between align-items-center">
+                                                    <div class="col-5">
+                                                        <div class="d-flex">
+                                                            <p class="me-3">Status</p>
+                                                            <p><strong>Ativo</strong></p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="me-3">Moeda</p>
+                                                            <p><strong>BRL</strong></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="ms-3">
+                                                                <p>Limite de Crédito</p>
+                                                                <p><strong>{{ card.limit }} BRL</strong></p>
+                                                            </div>
+                                                            <div id="circle2"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                        <div class="stat-widget-1">
+                                            <h6>Despesas do Cartão</h6>
+                                            <h3>R$ {{ expenses_by_card|get_item:card.id }}</h3>
+                                            <p>
+                                                <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                                Último mês <strong>$24,478</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                            <div class="stat-widget-1">
+                                                <h6>Limite Disponível</h6>
+                                                <h3>R$ {{ card.available_limit }}</h3>
+                                                <p>
+                                                    <span class="text-success"><i class="fi fi-rr-arrow-trend-up"></i>2.47%</span>
+                                                    Último mês <strong>$24,478</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <div class="col-xxl-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Saldo ao Longo do Tempo</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div id="apexChartBalanceOvertime_Card_{{ card.pk }}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Histórico de Transações</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="transaction-table">
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0 table-responsive-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Categoria</th>
+                                                                    <th>Data</th>
+                                                                    <th>Descrição</th>
+                                                                    <th>Valor</th>
+                                                                    <th>Moeda</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for transaction in transactions_by_card|get_item:card.id %}
+                                                                <tr>
+                                                                    <td>
+                                                                        <span class="table-category-icon">
+                                                                            <i class="{{ transaction.category.color_class }} {{ transaction.category.icon_class }}"></i>
+                                                                            {{ transaction.category.name }}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.date|date:"d.m.Y" }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.description }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ transaction.amount }}
+                                                                    </td>
+                                                                    <td>BRL</td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            </div>
                     </div>
                 </div>
             </div>
@@ -205,7 +364,7 @@
     
 <script src="/static/vendor/chartjs/chartjs.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-{{ chart_data_by_account|json_script:"all-chart-data" }}
+{{ chart_data_by_wallet|json_script:"all-chart-data" }}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

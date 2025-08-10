@@ -35,7 +35,8 @@ TRANSACTION_TYPES = (
 # O modelo `Transaction` representa uma movimentação de dinheiro
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True)
+    card = models.ForeignKey('Card', on_delete=models.CASCADE, null=True, blank=True)
     
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPES)
@@ -120,6 +121,7 @@ class Card(models.Model):
     card_name = models.CharField(max_length=255, default='Meu Cartão')
     card_number_masked = models.CharField(max_length=16) # O número será salvo mascarado
     expiration_date = models.CharField(max_length=5) # Formato MM/YY
+    limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     
     def __str__(self):
         return f"Card de {self.name_on_card} - {self.user.username}"
